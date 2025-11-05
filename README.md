@@ -1,3 +1,4 @@
+	<br />
 	<a href="./david-jackson-ui-ux-portfolio.pdf" target="_blank" name="Portfolio" title="Portfolio opens in a new window" >
 	Portfolio</a>
   <br />
