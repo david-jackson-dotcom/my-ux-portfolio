@@ -1,4 +1,4 @@
-	<img title="logo" src="./footbutton.png" width="*" height="*" alt="footbutton" id="footbutton" />	<br />
+<head />	<img title="logo" src="./footbutton.png" width="*" height="*" alt="footbutton" id="footbutton" />	<br />
 	<p> Thanks for your interest. </p>
 	<br />
 	<a href="./david-jackson-ui-ux-portfolio.pdf" target="_blank" name="Portfolio" title="Portfolio opens in a new window" >
