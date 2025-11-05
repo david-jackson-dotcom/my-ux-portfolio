@@ -1,4 +1,4 @@
-<head />	<img title="logo" src="./footbutton.png" width="*" height="*" alt="footbutton" id="footbutton" />	<br />
+<head />	</head><center><img title="logo" src="./footbutton.png" width="*" height="110" alt="footbutton" id="footbutton" />	<br />
 	<p> Thanks for your interest. </p>
 	<br />
 	<a href="./david-jackson-ui-ux-portfolio.pdf" target="_blank" name="Portfolio" title="Portfolio opens in a new window" >
@@ -8,4 +8,4 @@
 	Résumé</a>
   <br  />
   	<a href="./david-jackson-ui-ux-resume+portfolio.pdf" target="_blank" name="Combined" title="Combined résumé (portrait) and portfolio (landscape) opens in a new window" >
-	Combined</a>
+	Combined</a></center>
