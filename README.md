@@ -1,4 +1,5 @@
-<head />	</head><center><img title="logo" src="./footbutton.png" width="*" height="110" alt="footbutton" id="footbutton" />	<br />
+<head />	</head><center><img title="logo" src="./footbutton.png" width="*" height="110" alt="footbutton" id="footbutton" /></center>
+	<br />
 	<p> Thanks for your interest. </p>
 	<br />
 	<a href="./david-jackson-ui-ux-portfolio.pdf" target="_blank" name="Portfolio" title="Portfolio opens in a new window" >
@@ -19,4 +20,3 @@
     <a href="https://www.figma.com/make/PQblht9qWOzFCWiZC75FMx/Gym-Buddy----Mobile-App---Hi-Fi?node-id=0-1&t=pID2vyYEyQ8FtdCo-1">Gym Buddy Mobile App</a>
 </div>
 	</p>
-</center>
