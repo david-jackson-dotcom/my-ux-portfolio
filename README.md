@@ -13,7 +13,7 @@
 	Combined</a>
 <br />
 --><br />
-	<p><I> Note: Interactive links within the embedded PDF may be disabled by your browser's security settings. Click on any project to see it on figma:</I></p>
+	<p><I> Note: Interactive links within the embedded PDF may be disabled by your browser's security settings. Click on any project to see it on Figma:</I></p>
 	<div class="project-links">
     <a href="https://www.figma.com/make/GDhK18uczzOebHSmpEXwQs/Dog-Directory---Web-Site-%E2%80%93-Hi-Fi?node-id=0-1&t=ZjmWDJKjylZnsG4a-1">Dog Services Site</a>
     <br />
