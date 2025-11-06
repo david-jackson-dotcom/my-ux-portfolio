@@ -10,7 +10,7 @@
   	<a href="./david-jackson-ui-ux-resume+portfolio.pdf" target="_blank" name="Combined" title="Combined résumé (portrait) and portfolio (landscape) opens in a new window" >
 	Combined</a>
 <br /><br />
-	<p><I> Important: The portfolio contains links to prototypes which are inactive unless the PDF is downloaded. Click on any project to see it on figma:</I></p>
+	<p><I> Important: The portfolio contains links to prototypes which are inactive unless the PDF is downloaded. Click on any project to see it on Figma:</I></p>
 	<div class="project-links">
     <a href="https://www.figma.com/make/GDhK18uczzOebHSmpEXwQs/Dog-Directory---Web-Site-%E2%80%93-Hi-Fi?node-id=0-1&t=ZjmWDJKjylZnsG4a-1">Dog Services Site</a>
     <br />
