@@ -1,0 +1,110 @@
+/* style.css - Updated for Border on Image */
+/* --- Reset and Base Styles --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    overflow: hidden; 
+    background-color: #FFF;
+}
+
+.page-container {
+    position: relative; 
+    width: 100vw;
+    height: 100vh;
+    /* Border removed from here */
+}
+
+/* --- Image Wrapper and Z-index Management --- */
+.image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+}
+
+.full-page-image {
+    /* Enforce requested size and center it */
+    display: block;
+    object-fit: contain; /* Shows the entire 792x612 image within the viewport */
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    
+    /* 👇 BORDER ADDED DIRECTLY TO THE IMAGE ELEMENT */
+    border: 12px solid gray; 
+    
+    filter: none;
+    transition: none;
+}
+
+/* --- Remote Resource Button Placement (Higher Z-axis) --- */
+.action-button-wrapper {
+    position: absolute;
+    z-index: 20; 
+}
+
+/* Button Graphic Styling (51px x 48px) */
+.custom-graphic-button img {
+    display: block;
+    width: 51px; 
+    height: 48px;
+    border: none;
+}
+
+/* --- Specific Page Button Placement --- */
+
+/* Page 4: top: 540px; left: 644px; */
+#page-4 .action-button-wrapper {
+    top: 540px; 
+    left: 644px;
+}
+
+/* Page 7: top: 540; left: 136px; */
+#page-7 .action-button-wrapper {
+    top: 540px; 
+    left: 136px;
+}
+
+/* Page 8: top: 540px; left: 639px; */
+#page-8 .action-button-wrapper {
+    top: 540px; 
+    left: 639px;
+}
+
+/* --- Navigation Buttons (Split Alignment) --- */
+.navigation {
+    position: fixed; 
+    top: 612px; /* Aligns to the bottom of the viewport */
+    left: 20px; /* Starts 20px from the left */
+    right: 300px; /* Ends 20px from the right (effectively full width minus padding) */
+    z-index: 30; 
+    
+    /* 👇 Use Flexbox to align items to opposite ends */
+    display: flex; 
+    justify-content: space-between; /* Pushes the first item left, the second item right */
+    align-items: center;
+}
+
+/* Style for the Previous button */
+.prev-page-link {
+    /* Ensures it looks like the next button */
+    color: white;
+    background-color: #000; 
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style for the Next button (remains the same) */
+.next-page-link {
+    color: white;
+    background-color: #000;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
