@@ -24,18 +24,28 @@ body {
     width: 100%;
     height: 100%;
     z-index: 10; 
-       border-style: solid;
-  border-color: gray;
+    
+    /* 👇 ADDED: Use Flexbox to center the image horizontally and vertically */
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
 }
 
 .full-page-image {
-    /* Enforce requested size and center it */
+    /* Define the exact dimensions of your image */
+    width: 792px; 
+    height: 612px;
+    
+    /* Ensure it remains a block element */
     display: block;
-    object-fit: contain; /* Shows the entire 792x612 image within the viewport */
-    margin: auto;
-    max-width: 100%;
-    max-height: 100%;
-    border: 1px solid #eee;
+    
+    /* 👇 REMOVED: max-width/max-height, margin: auto, and object-fit: contain; */
+    /* By setting the fixed width/height and using the flexbox center, 
+       the image now centers precisely. */
+    
+    /* Add the gray border back to the image */
+    border: 1px solid gray; 
+    
     filter: none;
     transition: none;
 }
