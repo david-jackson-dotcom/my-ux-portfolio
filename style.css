@@ -81,20 +81,22 @@ body {
 }
 
 
-/* --- Navigation Buttons (Image-Aligned Width) --- */
+/* --- Navigation Buttons (Image-Aligned Width, Below Image) --- */
 .navigation {
-    position: fixed; 
-    top: 620px; 
-    z-index: 30; 
+    /* 👇 CHANGE: Use absolute position relative to the page container */
+    position: absolute; 
     
-    /* 👇 1. RESTRICT WIDTH to match the image width */
+    /* Place 20px below the 612px tall image */
+    top: calc(612px + 20px); 
+    
+    /* 👇 Centering properties remain the same for horizontal alignment */
     width: 792px; 
-    
-    /* 👇 2. CENTER THE BLOCK horizontally */
     left: 50%;
     transform: translateX(-50%); 
     
-    /* The Flexbox settings to split the buttons remain the same */
+    z-index: 30; 
+    
+    /* Flexbox settings for split alignment */
     display: flex; 
     justify-content: space-between; 
     align-items: center;
