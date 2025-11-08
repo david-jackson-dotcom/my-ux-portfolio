@@ -84,7 +84,7 @@ body {
 /* --- Navigation Buttons (Image-Aligned Width) --- */
 .navigation {
     position: fixed; 
-    top: 540px; 
+    top: 620px; 
     z-index: 30; 
     
     /* 👇 1. RESTRICT WIDTH to match the image width */
