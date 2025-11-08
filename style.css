@@ -72,7 +72,13 @@ body {
     position: absolute; /* Positioned absolutely relative to .button-anchor */
     z-index: 20; 
 }
-
+/* Button Graphic Styling (51px x 48px) */
+.custom-graphic-button img {
+    display: block;
+    width: 51px; /* Ensure this is 51px wide */
+    height: 48px; /* Ensure this is 48px tall */
+    border: none;
+}
 /* --- Specific Page Button Placement (Coordinates work now) --- */
 
 /* Page 4: top: 540px; left: 644px; */
