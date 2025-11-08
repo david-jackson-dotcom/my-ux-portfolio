@@ -12,7 +12,8 @@ body {
     position: relative; 
     width: 100vw;
     height: 100vh;
-    /* Border removed from here */
+    border-style: solid;
+  border-color: gray;
 }
 
 /* --- Image Wrapper and Z-index Management --- */
