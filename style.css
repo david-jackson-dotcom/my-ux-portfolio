@@ -46,40 +46,52 @@ body {
     transition: none;
 }
 
+/* --- New Anchor for Centered Buttons --- */
+.image-wrapper {
+    /* ... (Existing Flexbox centering code) ... */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+}
+
+/* This new div will cover the image area and allow absolute button positioning */
+.button-anchor {
+    position: relative; /* This is the new reference point */
+    width: 792px; /* Same width as the image */
+    height: 612px; /* Same height as the image */
+}
+
 /* --- Remote Resource Button Placement (Higher Z-axis) --- */
 .action-button-wrapper {
-    position: absolute;
+    position: absolute; /* Positioned absolutely relative to .button-anchor */
     z-index: 20; 
 }
 
-/* Button Graphic Styling (51px x 48px) */
-.custom-graphic-button img {
-    display: block;
-    width: 51px; 
-    height: 48px;
-    border: none;
-}
+/* --- Specific Page Button Placement (Coordinates work now) --- */
 
-/* --- Specific Page Button Placement --- */
-
-/* Page 4: top: 550px; left: 644px; */
+/* Page 4: top: 540px; left: 644px; */
 #page-4 .action-button-wrapper {
-    top: 500px; 
+    top: 540px; 
     left: 644px;
 }
 
-/* Page 7: top: 550; left: 136px; */
+/* Page 7: top: 540; left: 638px; */
 #page-7 .action-button-wrapper {
+    top: 540px; 
+    left: 638px;
+}
+
+/* Page 8: top: 540px; left: 136px; */
+#page-8 .action-button-wrapper {
     top: 540px; 
     left: 136px;
 }
-
-/* Page 8: top: 540px; left: 639px; */
-#page-8 .action-button-wrapper {
-    top: 540px; 
-    left: 639px;
-}
-
 
 /* --- Navigation Buttons (Image-Aligned Width, Below Image) --- */
 .navigation {
