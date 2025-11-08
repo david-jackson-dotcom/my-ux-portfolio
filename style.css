@@ -74,17 +74,23 @@ body {
     left: 639px;
 }
 
-/* --- Navigation Buttons (Split Alignment) --- */
+
+/* --- Navigation Buttons (Image-Aligned Width) --- */
 .navigation {
     position: fixed; 
-    top: 612px; /* Aligns to the bottom of the viewport */
-    left: 20px; /* Starts 20px from the left */
-    right: 300px; /* Ends 20px from the right (effectively full width minus padding) */
+    bottom: 20px; 
     z-index: 30; 
     
-    /* 👇 Use Flexbox to align items to opposite ends */
+    /* 👇 1. RESTRICT WIDTH to match the image width */
+    width: 792px; 
+    
+    /* 👇 2. CENTER THE BLOCK horizontally */
+    left: 50%;
+    transform: translateX(-50%); 
+    
+    /* The Flexbox settings to split the buttons remain the same */
     display: flex; 
-    justify-content: space-between; /* Pushes the first item left, the second item right */
+    justify-content: space-between; 
     align-items: center;
 }
 
