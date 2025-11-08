@@ -19,29 +19,25 @@ body {
 /* --- Image Wrapper and Z-index Management --- */
 .image-wrapper {
     position: absolute;
-    top: 0;
+    top: 0; /* ANCHOR TO THE TOP */
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 10; 
     
-    /* 👇 ADDED: Use Flexbox to center the image horizontally and vertically */
+    /* Use Flexbox to center the content HORIZONTALLY */
     display: flex;
     justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
+    
+    /* 👇 REMOVED: align-items: center; (This caused vertical centering) */
+    align-items: flex-start; /* Aligns content to the top of the container */
 }
 
 .full-page-image {
-    /* Define the exact dimensions of your image */
+    /* Dimensions remain fixed */
     width: 792px; 
     height: 612px;
-    
-    /* Ensure it remains a block element */
     display: block;
-    
-    /* 👇 REMOVED: max-width/max-height, margin: auto, and object-fit: contain; */
-    /* By setting the fixed width/height and using the flexbox center, 
-       the image now centers precisely. */
     
     /* Add the gray border back to the image */
     border: 1px solid gray; 
