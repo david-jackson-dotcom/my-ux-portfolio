@@ -10,12 +10,15 @@ body {
 }
 
 .page-container {
+    /* DESKTOP ONLY: Sets up the main background and boundary */
     position: relative; 
     width: 100vw;
     min-height: 100vh;
     border-style: solid;
     border-color: gray;
     max-width: 100%;
+    /* Default is block */
+    display: block; 
 }
 
 /* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
@@ -96,8 +99,7 @@ body {
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
-    border: 1px solid red; 
-    /* Explicitly set display for base styling */
+    border: 1px solid #fff; 
     display: inline-block; 
 }
 
@@ -107,7 +109,7 @@ body {
 /* ------------------------------------------------------------------- */
 @media screen and (max-width: 792px) {
     
-    /* FIX: Main page container uses Flexbox for reliable centering of the whole content block */
+    /* FIX: Main page container must be a Flex container for mobile centering */
     .page-container {
         display: flex;
         flex-direction: column;
@@ -116,11 +118,12 @@ body {
         min-height: auto; 
         padding-top: 20px; 
         padding-bottom: 20px;
+        border: none; /* Remove conflicting border on mobile */
     }
 
     /* FIX 1: Overriding the image-wrapper absolute desktop styles for mobile flow */
     .image-wrapper {
-        position: relative; 
+        position: relative; /* Must be relative to flow in Flexbox */
         height: auto; 
         width: 90vw; /* Defines the width of the whole white content block */
         
@@ -140,7 +143,7 @@ body {
 
     /* Scales down the actual image */
     .full-page-image {
-        width: 100%; /* Image fills its anchor container */
+        width: 100%; 
         height: auto; 
     }
     
@@ -159,4 +162,41 @@ body {
     }
 
     /* Calculations based on the 792x612 ratio relative to the 100% width of .button-anchor */
-    #
+    #page-4 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(644 / 792 * 100%); }
+    #page-7 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(137 / 792 * 100%); }
+    #page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
+    
+    /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
+    .navigation {
+        position: relative; 
+        top: auto; 
+        bottom: auto; 
+        
+        /* Spacing and width */
+        margin-top: 40px; 
+        margin-bottom: 20px;
+        
+        /* CRITICAL: Must match the image's container width (90vw) to align properly */
+        width: 90vw; 
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        left: auto;
+        transform: none;
+        
+        /* FIX 3: Reset background/border to ensure clean look, this was the 'gray container' */
+        background-color: transparent; 
+        border: none;
+    }
+    
+    /* FIX 4: Re-apply the navigation link padding and font size for mobile readability */
+    .prev-page-link,
+    .next-page-link {
+        padding: 8px 12px;
+        font-size: 14px;
+        /* Ensure display is inline-block to show background/padding */
+        display: inline-block; 
+    }
+}
