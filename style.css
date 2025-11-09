@@ -1,17 +1,18 @@
-/* style.css - Cleaned and Corrected, Unified Desktop and Mobile Styling */
+/* style.css - FINAL CORRECTED RESPONSIVE STYLESHEET */
 /* --- Reset and Base Styles --- */
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    overflow: hidden; /* Prevent scrolling on desktop, will be overridden on mobile */
+    /* FIX 1: Ensure body can scroll on smaller screens */
+    overflow: auto; 
     background-color: #ccc;
 }
 
 .page-container {
     position: relative; 
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh; /* Use min-height to accommodate scrolling content */
     border-style: solid;
     border-color: gray;
 }
@@ -75,8 +76,8 @@ body {
     top: calc(612px + 20px); /* 20px below 612px image */
     z-index: 30; 
     
-    /* Fixed width and centering for desktop alignment */
-    width: 792px; /* Set to exact image width on desktop */
+    /* FIX 2: Set fixed width (792px) for perfect desktop alignment with the image */
+    width: 792px; 
     left: 50%;
     transform: translateX(-50%); 
     
@@ -104,27 +105,22 @@ body {
 /* ------------------------------------------------------------------- */
 @media screen and (max-width: 792px) {
     
-    /* Allow scrolling if content is too large (important for mobile) */
-    body {
-        overflow: auto; 
-    }
-    
     /* Scales down the main image content area (the coordinate system) */
     .button-anchor {
         width: 90vw; /* Use 90% of viewport width */
-        height: auto; /* Allow height to adjust proportionally */
+        height: auto; 
     }
 
     /* Scales down the actual image */
     .full-page-image {
-        width: 100%; /* Set width to 100% of its parent (.button-anchor) */
-        height: auto; /* Maintain aspect ratio */
+        width: 100%; 
+        height: auto; 
         border: 1px solid gray;
     }
     
     /* --- Custom Button Scaling (Mobile Proportional Coordinates) --- */
     .action-button-wrapper {
-        font-size: 0.8rem; /* Scale down button text */
+        font-size: 0.8rem; 
     }
 
     /* Page 4: 644px left, 540px top */
@@ -145,13 +141,16 @@ body {
         left: calc(638 / 792 * 100%); 
     }
     
-    /* --- Mobile Navigation Fix (Anchor to Bottom) --- */
+    /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
     .navigation {
-        /* KEY FIX: Forces the nav buttons to the bottom of the viewport */
-        position: fixed; 
-        bottom: 20px; 
-        top: auto; 
-
+        /* FIX 3: Revert to absolute positioning and calculate 'top' proportionally */
+        position: absolute; 
+        bottom: auto; /* Ensure bottom doesn't conflict */
+        
+        /* Set top based on the scaled height of the 90vw image + a buffer (40px) */
+        /* Ratio of image height/width is 612/792 ≈ 0.7727 */
+        top: calc( (612 / 792) * 90vw + 40px); 
+        
         /* Responsive width and centering */
         width: 90vw; 
         left: 50%;
