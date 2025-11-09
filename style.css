@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    /* Allow body to scroll */
     overflow: auto; 
     background-color: #ccc;
 }
@@ -97,7 +96,7 @@ body {
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
-    border: 1px solid red; 
+    border: 1px solid #fff; 
 }
 
 
@@ -110,7 +109,7 @@ body {
     .page-container {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Centers all child elements (image and navigation) horizontally */
+        align-items: center; /* Centers all content blocks (image/nav) horizontally */
         justify-content: flex-start; 
         min-height: auto; 
         padding-top: 20px; 
@@ -121,16 +120,20 @@ body {
     .image-wrapper {
         position: relative; /* Must be relative to flow in Flexbox */
         height: auto; 
-        width: 100%; /* Ensure it spans full container width defined by page-container */
+        width: 90vw; /* CRITICAL FIX: Explicitly setting the content block width */
         
         display: block; 
+        left: auto;
+        right: auto;
+        transform: none;
+        margin: 0;
     }
     
     /* Scales down the main image content area (the coordinate system) */
     .button-anchor {
-        width: 90vw; /* Use 90% of viewport width */
+        width: 100%; /* Fill the new 90vw wrapper */
         height: auto; 
-        margin: 0 auto; /* Ensures the image container is centered */
+        margin: 0; 
     }
 
     /* Scales down the actual image */
