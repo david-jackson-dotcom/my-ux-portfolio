@@ -15,7 +15,7 @@ position: relative;
 width: 100vw;
 min-height: 100vh;
 border-style: solid;
-border-color: gray;
+border-color: none;
 max-width: 100%;
 display: block;
 }
@@ -50,7 +50,7 @@ height: 612px;
 width: 792px;
 height: 612px;
 display: block;
-border: 1px solid gray;
+border: none;
 filter: none;
 transition: none;
 }
@@ -102,7 +102,7 @@ padding: 10px 15px;
 text-decoration: none;
 border-radius: 5px;
 font-size: 16px;
-border: 1px solid #fff;
+border: 1px solid red;
 display: inline-block;
 }
 
@@ -156,9 +156,6 @@ display: inline-block;
 
 /* --- Action Button Size and Scaling Fix --- */
 .custom-graphic-button img {
-    /* CRITICAL FIX: Use percentage width relative to the scaled image for proportional sizing */
-    width: 6.44%; /* 51px / 792px ≈ 6.44% */
-    height: auto; 
     max-width: 51px; 
     max-height: 48px;
 }
