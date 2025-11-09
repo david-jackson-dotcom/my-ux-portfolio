@@ -115,9 +115,9 @@ body {
         align-items: center; /* Centers content horizontally */
         
         /* VERTICAL ALIGNMENT FIX: Align content to the bottom of the viewport */
-        justify-content: flex-end; 
+        justify-content: flex-start; 
         
-        min-height: 100vh; 
+        min-height: auto; 
         padding-top: 20px; 
         padding-bottom: 20px; 
         border: none;
@@ -167,8 +167,7 @@ body {
         margin-bottom: 20px;
         
         /* CRITICAL WIDTH FIX: Ensures it matches the image-wrapper's 90vw width */
-        width: 100%;
-        max-width: 90vw; 
+        width: 90vw; 
         
         display: flex;
         justify-content: space-between;
