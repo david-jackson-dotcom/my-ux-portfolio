@@ -2,69 +2,71 @@
 
 /* --- Reset and Base Styles --- */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    overflow: auto; 
-    background-color: #ccc;
+margin: 0;
+padding: 0;
+font-family: sans-serif;
+overflow: auto;
+background-color: #ccc;
 }
 
 .page-container {
-    /* DESKTOP ONLY: Sets up the main background and boundary */
-    position: relative; 
-    width: 100vw;
-    min-height: 100vh;
-    border-style: solid;
-    border-color: gray;
-    max-width: 100%;
-    display: block; 
+/* DESKTOP ONLY: Sets up the main background and boundary */
+position: relative;
+width: 100vw;
+min-height: 100vh;
+border-style: solid;
+border-color: gray;
+max-width: 100%;
+display: block;
 }
 
-/* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
+/* --- Image Wrapper and Z-index Management (Desktop/Default) --- /
 .image-wrapper {
-    /* Desktop positioning relies on absolute positioning for top-alignment */
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10; 
-    
-    /* Flexbox centers content horizontally */
-    display: flex;
-    justify-content: center; 
-    align-items: flex-start;
+/ Desktop positioning relies on absolute positioning for top-alignment */
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 10;
+
+/* Flexbox centers content horizontally */
+display: flex;
+justify-content: center; 
+align-items: flex-start;
+
+
 }
 
 /* This is the 792x612 coordinate system anchor */
 .button-anchor {
-    position: relative; 
-    width: 792px; 
-    height: 612px; 
+position: relative;
+width: 792px;
+height: 612px;
 }
 
 .full-page-image {
-    /* Dimensions remain fixed for desktop */
-    width: 792px; 
-    height: 612px;
-    display: block;
-    border: none; 
-    filter: none;
-    transition: none;
+/* Dimensions remain fixed for desktop */
+width: 792px;
+height: 612px;
+display: block;
+border: 1px solid gray;
+filter: none;
+transition: none;
 }
 
-/* --- Remote Resource Button Placement (Desktop/Default) --- */
+/* --- Remote Resource Button Placement (Desktop/Default) --- /
 .action-button-wrapper {
-    position: absolute; /* Positioned relative to .button-anchor */
-    z-index: 20; 
+position: absolute; / Positioned relative to .button-anchor */
+z-index: 20;
 }
 
 /* Button Graphic Styling (51px x 48px) */
 .custom-graphic-button img {
-    display: block;
-    width: 51px; 
-    height: 48px; 
-    border: none;
+display: block;
+width: 51px;
+height: 48px;
+border: none;
 }
 
 /* --- Specific Page Button Placement (Desktop Coordinates) --- */
@@ -72,128 +74,131 @@ body {
 #page-7 .action-button-wrapper { top: 540px; left: 137px; }
 #page-8 .action-button-wrapper { top: 540px; left: 638px; }
 
-/* --- Navigation Buttons (Desktop Alignment: Below Image) --- */
+/* --- Navigation Buttons (Desktop Alignment: Below Image) --- /
 .navigation {
-    position: absolute; 
-    top: calc(612px + 20px); /* 20px below 612px image */
-    z-index: 30; 
-    
-    /* Set fixed width (792px) for perfect desktop alignment with the image */
-    width: 792px; 
-    left: 50%;
-    transform: translateX(-50%); 
-    
-    /* Flexbox settings for split alignment */
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
+position: absolute;
+top: calc(612px + 20px); / 20px below 612px image */
+z-index: 30;
+
+/* Set fixed width (792px) for perfect desktop alignment with the image */
+width: 792px; 
+left: 50%;
+transform: translateX(-50%); 
+
+/* Flexbox settings for split alignment */
+display: flex; 
+justify-content: space-between; 
+align-items: center;
+
+
 }
 
 .prev-page-link,
 .next-page-link {
-    /* Combined styles for both links */
-    color: white;
-    background-color: #000;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    border: 1px solid red; 
+/* Combined styles for both links */
+color: white;
+background-color: #000;
+padding: 10px 15px;
+text-decoration: none;
+border-radius: 5px;
+font-size: 16px;
+border: 1px solid red;
+display: inline-block;
+}
+
+/* ------------------------------------------------------------------- /
+/ --- MEDIA QUERY for Mobile Devices (Screens narrower than the image) --- /
+/ ------------------------------------------------------------------- */
+@media screen and (max-width: 792px) {
+
+/* FIX: Main page container must be a Flex container for mobile centering */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    
+    /* Vertical alignment to the bottom of the screen */
+    justify-content: flex-end; 
+    
+    min-height: 100vh; 
+    padding-top: 20px; 
+    padding-bottom: 70px; /* Added padding to prevent browser bar overlap */
+    
+    border: none;
+}
+
+/* FIX 1: Set the mobile reference width (90vw) on the image wrapper */
+.image-wrapper {
+    position: relative; 
+    height: auto; 
+    width: 90vw; 
+    
+    display: block; 
+    left: auto;
+    right: auto;
+    transform: none;
+    margin: 0;
+}
+
+/* Scales down the main image content area (the coordinate system) */
+.button-anchor {
+    width: 100%; /* Fills the 90vw parent */
+    height: auto; 
+}
+
+/* Scales down the actual image */
+.full-page-image {
+    width: 100%; 
+    height: auto; 
+}
+
+/* --- Action Button Size and Scaling Fix --- */
+.custom-graphic-button img {
+    /* CRITICAL FIX: Use percentage width (51/792 ≈ 6.44%) relative to the 
+       scaled parent (.button-anchor) for correct proportional sizing. */
+    width: 6.44%;
+    height: auto; 
+    max-width: 51px; 
+    max-height: 48px;
+}
+
+/* --- Mobile Button Coordinates (Proportional) --- */
+.action-button-wrapper {
+    font-size: 0.8rem; 
+}
+
+#page-4 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(644 / 792 * 100%); }
+#page-7 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(137 / 792 * 100%); }
+#page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
+
+/* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
+.navigation {
+    position: relative; 
+    top: auto; 
+    bottom: auto; 
+    
+    margin-top: 40px; 
+    margin-bottom: 20px;
+    
+    /* CRITICAL WIDTH FIX: Set to 90vw to exactly match the image wrapper width for correct edge alignment. */
+    width: 90vw; 
+    /* Removed max-width: 90vw; to rely only on this single definition */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    left: auto;
+    transform: none;
+}
+
+/* Restored navigation link styling for mobile */
+.prev-page-link,
+.next-page-link {
+    padding: 8px 12px;
+    font-size: 14px;
     display: inline-block; 
 }
 
 
-/* ------------------------------------------------------------------- */
-/* --- MEDIA QUERY for Mobile Devices (Screens narrower than the image) --- */
-/* ------------------------------------------------------------------- */
-@media screen and (max-width: 792px) {
-    
-    /* FIX: Main page container must be a Flex container for mobile centering */
-    .page-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centers content horizontally */
-        
-        /* Vertical alignment to the bottom of the screen */
-        justify-content: flex-end; 
-        
-        min-height: 100vh; 
-        padding-top: 20px; 
-        padding-bottom: 70px; /* Added padding to prevent browser bar overlap */
-        
-        border: none;
-    }
-
-    /* FIX 1: Remove absolute positioning for scrolling flow and set reference width */
-    .image-wrapper {
-        position: relative; 
-        height: auto; 
-        width: 90vw; /* This defines the reference width of the image block */
-        
-        display: block; 
-        left: auto;
-        right: auto;
-        transform: none;
-        margin: 0;
-    }
-    
-    /* Scales down the main image content area (the coordinate system) */
-    .button-anchor {
-        width: 100%; /* Fills the 90vw parent */
-        height: auto; 
-    }
-
-    /* Scales down the actual image */
-    .full-page-image {
-        width: 100%; 
-        height: auto; 
-    }
-    
-    /* --- Action Button Size and Scaling Fix --- */
-    .custom-graphic-button img {
-        /* CRITICAL FIX: Ensures the image size scales proportionally to the viewport, 
-           retaining the 51x48 aspect ratio */
-        width: calc(51 / 792 * 90vw); /* Calculates the proportional width relative to 90vw */
-        height: auto; 
-        max-width: 51px; 
-        max-height: 48px;
-    }
-    
-    /* --- Mobile Button Coordinates (Proportional) --- */
-    .action-button-wrapper {
-        font-size: 0.8rem; 
-    }
-
-    #page-4 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(644 / 792 * 100%); }
-    #page-7 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(137 / 792 * 100%); }
-    #page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
-    
-    /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
-    .navigation {
-        position: relative; 
-        top: auto; 
-        bottom: auto; 
-        
-        margin-top: 40px; 
-        margin-bottom: 20px;
-        
-        /* CRITICAL WIDTH FIX: Spans the full width of the 90vw image wrapper */
-        width: 100%;
-        max-width: 90vw; 
-        
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
-        left: auto;
-        transform: none;
-    }
-    
-    /* Restored navigation link styling for mobile */
-    .prev-page-link,
-    .next-page-link {
-        padding: 8px 12px;
-        font-size: 14px;
-        display: inline-block; 
-    }
 }
