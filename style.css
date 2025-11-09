@@ -106,8 +106,8 @@ body {
     /* FIX 1: Make the image-wrapper flow naturally */
     .image-wrapper {
         position: relative; /* Change from absolute for natural flow */
-        height: auto; /* Allow height to collapse to content size */
-        padding-top: 20px; /* Add some top spacing for the centered block */
+        height: auto; 
+        padding-top: 20px; 
         padding-bottom: 20px;
     }
     
@@ -146,20 +146,24 @@ body {
     
     /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
     .navigation {
-        /* FIX 2: Remove absolute positioning and use margin for spacing */
+        /* FIX 2: Use relative position */
         position: relative; 
         top: auto; 
         bottom: auto; 
         
-        /* Use margin-top to separate it from the image block */
-        margin-top: 40px; 
-        margin-bottom: 40px;
+        /* FIX 3: Simplify Centering using auto-margins and set display: flex explicitly */
+        margin: 40px auto; /* Centers the block horizontally and adds top/bottom spacing */
         
-        /* Responsive width and centering */
+        /* Reinforce Flexbox to prevent stacking and ensure separation */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        /* Responsive width */
         width: 90vw; 
         
-        /* Use relative positioning for centering since we are no longer inside the Flexbox container */
-        left: 50%;
-        transform: translateX(-50%); 
+        /* Remove conflicting positioning styles */
+        left: auto;
+        transform: none;
     }
 }
