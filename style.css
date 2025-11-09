@@ -158,17 +158,16 @@ body {
     #page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
     
     /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
-    .navigation {
-        position: relative; 
-        top: auto; 
-        bottom: auto; 
-        
-        margin-top: 40px; 
-        margin-bottom: 20px;
-        
-        /* CRITICAL WIDTH FIX: Ensures it matches the image-wrapper's 90vw width */
-        width: 90vw; 
-        
+.navigation {
+    /* Use 100% width to span its parent's width */
+    width: 100%;
+    
+    /* Ensure the navigation doesn't exceed the image size for alignment */
+    max-width: 90vw; 
+    
+    /* Center it visually */
+    margin: 0 auto; 
+    
         display: flex;
         justify-content: space-between;
         align-items: center;
