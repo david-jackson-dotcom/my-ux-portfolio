@@ -48,7 +48,7 @@ body {
     width: 792px; 
     height: 612px;
     display: block;
-    border: 1px solid gray; 
+    border: none; 
     filter: none;
     transition: none;
 }
@@ -114,12 +114,13 @@ body {
         flex-direction: column;
         align-items: center; /* Centers content horizontally */
         
-        /* VERTICAL ALIGNMENT FIX: Align content to the bottom of the viewport */
-        justify-content: flex-start; 
+        /* Vertical alignment to the bottom of the screen */
+        justify-content: flex-end; 
         
-        min-height: auto; 
+        min-height: 100vh; 
         padding-top: 20px; 
-        padding-bottom: 20px; 
+        padding-bottom: 70px; /* Added padding to prevent browser bar overlap */
+        
         border: none;
     }
 
@@ -148,6 +149,16 @@ body {
         height: auto; 
     }
     
+    /* --- Action Button Size and Scaling Fix --- */
+    .custom-graphic-button img {
+        /* CRITICAL FIX: Ensures the image size scales proportionally to the viewport, 
+           retaining the 51x48 aspect ratio */
+        width: calc(51 / 792 * 90vw); /* Calculates the proportional width relative to 90vw */
+        height: auto; 
+        max-width: 51px; 
+        max-height: 48px;
+    }
+    
     /* --- Mobile Button Coordinates (Proportional) --- */
     .action-button-wrapper {
         font-size: 0.8rem; 
@@ -158,16 +169,18 @@ body {
     #page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
     
     /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
-.navigation {
-    /* Use 100% width to span its parent's width */
-    width: 100%;
-    
-    /* Ensure the navigation doesn't exceed the image size for alignment */
-    max-width: 90vw; 
-    
-    /* Center it visually */
-    margin: 0 auto; 
-    
+    .navigation {
+        position: relative; 
+        top: auto; 
+        bottom: auto; 
+        
+        margin-top: 40px; 
+        margin-bottom: 20px;
+        
+        /* CRITICAL WIDTH FIX: Spans the full width of the 90vw image wrapper */
+        width: 100%;
+        max-width: 90vw; 
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
