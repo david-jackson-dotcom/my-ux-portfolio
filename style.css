@@ -101,18 +101,14 @@ body {
 
 /* --- Navigation Buttons (Image-Aligned Width, Below Image) --- */
 .navigation {
-    /* 👇 CHANGE: Use absolute position relative to the page container */
     position: absolute; 
-    
-    /* Place 20px below the 612px tall image */
     top: calc(612px + 20px); 
+    z-index: 30; 
     
-    /* 👇 Centering properties remain the same for horizontal alignment */
-    width: 792px; 
+    /* 👇 Use responsive units and auto margin for centering */
+    width: 90vw; /* Make the navigation responsive and 90% of the viewport width */
     left: 50%;
     transform: translateX(-50%); 
-    
-    z-index: 30; 
     
     /* Flexbox settings for split alignment */
     display: flex; 
@@ -139,4 +135,59 @@ body {
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
+}
+
+/* --- MEDIA QUERY for Mobile Devices (Screens narrower than the image) --- */
+@media screen and (max-width: 792px) {
+    
+    /* Scales down the main image content area */
+    .button-anchor {
+        /* Use 90vw (90% of viewport width) for the new coordinate system */
+        width: 90vw;
+        height: auto; /* Allow height to adjust proportionally */
+    }
+
+    /* Scales down the actual image */
+    .full-page-image {
+        /* Set max width to 100% of its parent (.button-anchor) */
+        width: 100%; 
+        height: auto; /* Maintain aspect ratio */
+        border: 1px solid gray;
+    }
+    
+    /* --- Custom Button Scaling (Crucial for mobile alignment) --- */
+    /* We must recalculate the custom button coordinates using percentages 
+       relative to the new 90vw width to keep its position proportional. */
+       
+    .action-button-wrapper {
+        /* Ensure all coordinates are now percentages of the new width/height.
+           Example: 644px / 792px ≈ 81.3% */
+        font-size: 0.8rem; /* Optional: Scale down button text */
+    }
+
+    /* Page 4: 644px left, 540px top */
+    #page-4 .action-button-wrapper {
+        top: calc(540 / 612 * 100%); /* Maintain vertical proportion */
+        left: calc(644 / 792 * 100%); /* Maintain horizontal proportion */
+    }
+
+    /* Page 7: 638px left, 540px top */
+    #page-7 .action-button-wrapper {
+        top: calc(540 / 612 * 100%); 
+        left: calc(638 / 792 * 100%); 
+    }
+
+    /* Page 8: 136px left, 540px top */
+    #page-8 .action-button-wrapper {
+        top: calc(540 / 612 * 100%); 
+        left: calc(136 / 792 * 100%); 
+    }
+    
+    /* Ensure navigation is placed below the scaled image */
+    .navigation {
+        /* We must now use a percentage calculation for 'top' to account for the scaled image height */
+        /* New top position will be roughly 612px (image height) + 20px (spacing) */
+        top: calc(100% + 20px); 
+    }
+
 }
