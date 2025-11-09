@@ -1,10 +1,10 @@
 /* style.css - FINAL CORRECTED RESPONSIVE STYLESHEET */
+
 /* --- Reset and Base Styles --- */
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    /* Allow body to scroll */
     overflow: auto; 
     background-color: #ccc;
 }
@@ -15,10 +15,13 @@ body {
     min-height: 100vh;
     border-style: solid;
     border-color: gray;
+    /* FIX: Set a maximum width for desktop alignment */
+    max-width: 100%;
 }
 
 /* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
 .image-wrapper {
+    /* Desktop positioning relies on absolute positioning for top-alignment */
     position: absolute;
     top: 0; 
     left: 0;
@@ -26,7 +29,7 @@ body {
     height: 100%;
     z-index: 10; 
     
-    /* Flexbox setup: center horizontally, align content to the top */
+    /* Flexbox centers content horizontally */
     display: flex;
     justify-content: center; 
     align-items: flex-start;
@@ -103,17 +106,29 @@ body {
 /* ------------------------------------------------------------------- */
 @media screen and (max-width: 792px) {
     
-    /* FIX 1: Make the image-wrapper flow naturally */
+    /* NEW FIX: Make the main page container use Flexbox for reliable centering */
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centers all child elements (image and navigation) horizontally */
+        justify-content: flex-start; /* Aligns to the top */
+        min-height: auto; /* Allow height to collapse to content size */
+        padding-top: 20px; /* Add top padding to the whole content stack */
+    }
+
+    /* FIX 1: Remove absolute positioning for scrolling flow */
     .image-wrapper {
-        position: relative; /* Change from absolute for natural flow */
+        position: relative; 
         height: auto; 
-        padding-top: 20px; 
-        padding-bottom: 20px;
+        width: 90vw; /* Match navigation width */
+        
+        /* Remove inherited Flexbox centering as the page-container is handling it */
+        display: block; 
     }
     
     /* Scales down the main image content area (the coordinate system) */
     .button-anchor {
-        width: 90vw; /* Use 90% of viewport width */
+        width: 100%; /* Fill the 90vw parent */
         height: auto; 
     }
 
@@ -121,46 +136,32 @@ body {
     .full-page-image {
         width: 100%; 
         height: auto; 
-        border: 1px solid gray;
     }
     
-    /* --- Custom Button Scaling (Mobile Proportional Coordinates) --- */
+    /* --- Mobile Button Coordinates (Proportional) --- */
     .action-button-wrapper {
         font-size: 0.8rem; 
     }
 
-    #page-4 .action-button-wrapper {
-        top: calc(540 / 612 * 100%); 
-        left: calc(644 / 792 * 100%); 
-    }
-
-    #page-7 .action-button-wrapper {
-        top: calc(540 / 612 * 100%); 
-        left: calc(137 / 792 * 100%); 
-    }
-
-    #page-8 .action-button-wrapper {
-        top: calc(540 / 612 * 100%); 
-        left: calc(638 / 792 * 100%); 
-    }
+    #page-4 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(644 / 792 * 100%); }
+    #page-7 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(137 / 792 * 100%); }
+    #page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
     
     /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
     .navigation {
-        /* FIX 2: Use relative position */
+        /* FIX 2: Simple relative block now centered by the .page-container Flexbox */
         position: relative; 
         top: auto; 
         bottom: auto; 
         
-        /* FIX 3: Simplify Centering using auto-margins and set display: flex explicitly */
-        margin: 40px auto; /* Centers the block horizontally and adds top/bottom spacing */
+        /* Spacing and width */
+        margin-top: 40px; 
+        width: 90vw; /* Aligns with the image block */
         
-        /* Reinforce Flexbox to prevent stacking and ensure separation */
+        /* Ensure display remains flex to keep buttons side-by-side */
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
-        /* Responsive width */
-        width: 90vw; 
         
         /* Remove conflicting positioning styles */
         left: auto;
