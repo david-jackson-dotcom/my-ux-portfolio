@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    /* FIX 1: Ensure body can scroll on smaller screens */
+    /* Allow body to scroll */
     overflow: auto; 
     background-color: #ccc;
 }
@@ -12,7 +12,7 @@ body {
 .page-container {
     position: relative; 
     width: 100vw;
-    min-height: 100vh; /* Use min-height to accommodate scrolling content */
+    min-height: 100vh;
     border-style: solid;
     border-color: gray;
 }
@@ -44,9 +44,7 @@ body {
     width: 792px; 
     height: 612px;
     display: block;
-    
     border: 1px solid gray; 
-    
     filter: none;
     transition: none;
 }
@@ -76,7 +74,7 @@ body {
     top: calc(612px + 20px); /* 20px below 612px image */
     z-index: 30; 
     
-    /* FIX 2: Set fixed width (792px) for perfect desktop alignment with the image */
+    /* Set fixed width (792px) for perfect desktop alignment with the image */
     width: 792px; 
     left: 50%;
     transform: translateX(-50%); 
@@ -105,6 +103,14 @@ body {
 /* ------------------------------------------------------------------- */
 @media screen and (max-width: 792px) {
     
+    /* FIX 1: Make the image-wrapper flow naturally */
+    .image-wrapper {
+        position: relative; /* Change from absolute for natural flow */
+        height: auto; /* Allow height to collapse to content size */
+        padding-top: 20px; /* Add some top spacing for the centered block */
+        padding-bottom: 20px;
+    }
+    
     /* Scales down the main image content area (the coordinate system) */
     .button-anchor {
         width: 90vw; /* Use 90% of viewport width */
@@ -123,19 +129,16 @@ body {
         font-size: 0.8rem; 
     }
 
-    /* Page 4: 644px left, 540px top */
     #page-4 .action-button-wrapper {
         top: calc(540 / 612 * 100%); 
         left: calc(644 / 792 * 100%); 
     }
 
-    /* Page 7: 638px left, 540px top */
     #page-7 .action-button-wrapper {
         top: calc(540 / 612 * 100%); 
         left: calc(137 / 792 * 100%); 
     }
 
-    /* Page 8: 136px left, 540px top */
     #page-8 .action-button-wrapper {
         top: calc(540 / 612 * 100%); 
         left: calc(638 / 792 * 100%); 
@@ -143,16 +146,19 @@ body {
     
     /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
     .navigation {
-        /* FIX 3: Revert to absolute positioning and calculate 'top' proportionally */
-        position: absolute; 
-        bottom: auto; /* Ensure bottom doesn't conflict */
+        /* FIX 2: Remove absolute positioning and use margin for spacing */
+        position: relative; 
+        top: auto; 
+        bottom: auto; 
         
-        /* Set top based on the scaled height of the 90vw image + a buffer (40px) */
-        /* Ratio of image height/width is 612/792 ≈ 0.7727 */
-        top: calc( (612 / 792) * 90vw + 40px); 
+        /* Use margin-top to separate it from the image block */
+        margin-top: 40px; 
+        margin-bottom: 40px;
         
         /* Responsive width and centering */
         width: 90vw; 
+        
+        /* Use relative positioning for centering since we are no longer inside the Flexbox container */
         left: 50%;
         transform: translateX(-50%); 
     }
