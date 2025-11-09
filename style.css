@@ -1,10 +1,10 @@
-/* style.css - Updated for Border on Image */
+/* style.css - Cleaned and Corrected, Unified Desktop and Mobile Styling */
 /* --- Reset and Base Styles --- */
 body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    overflow: hidden; 
+    overflow: hidden; /* Prevent scrolling on desktop, will be overridden on mobile */
     background-color: #ccc;
 }
 
@@ -13,100 +13,70 @@ body {
     width: 100vw;
     height: 100vh;
     border-style: solid;
-  border-color: gray;
+    border-color: gray;
 }
 
-/* --- Image Wrapper and Z-index Management --- */
+/* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
 .image-wrapper {
     position: absolute;
-    top: 0; /* ANCHOR TO THE TOP */
+    top: 0; 
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 10; 
     
-    /* Use Flexbox to center the content HORIZONTALLY */
+    /* Flexbox setup: center horizontally, align content to the top */
     display: flex;
-    justify-content: center; /* Centers content horizontally */
-    
-    /* 👇 REMOVED: align-items: center; (This caused vertical centering) */
-    align-items: flex-start; /* Aligns content to the top of the container */
+    justify-content: center; 
+    align-items: flex-start;
+}
+
+/* This is the 792x612 coordinate system anchor */
+.button-anchor {
+    position: relative; 
+    width: 792px; 
+    height: 612px; 
 }
 
 .full-page-image {
-    /* Dimensions remain fixed */
+    /* Dimensions remain fixed for desktop */
     width: 792px; 
     height: 612px;
     display: block;
     
-    /* Add the gray border back to the image */
     border: 1px solid gray; 
     
     filter: none;
     transition: none;
 }
 
-/* --- New Anchor for Centered Buttons --- */
-.image-wrapper {
-    /* ... (Existing Flexbox centering code) ... */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10; 
-    display: flex;
-    justify-content: center; 
-    align-items: flex-start; 
-}
-
-/* This new div will cover the image area and allow absolute button positioning */
-.button-anchor {
-    position: relative; /* This is the new reference point */
-    width: 792px; /* Same width as the image */
-    height: 612px; /* Same height as the image */
-}
-
-/* --- Remote Resource Button Placement (Higher Z-axis) --- */
+/* --- Remote Resource Button Placement (Desktop/Default) --- */
 .action-button-wrapper {
-    position: absolute; /* Positioned absolutely relative to .button-anchor */
+    position: absolute; /* Positioned relative to .button-anchor */
     z-index: 20; 
 }
+
 /* Button Graphic Styling (51px x 48px) */
 .custom-graphic-button img {
     display: block;
-    width: 51px; /* Ensure this is 51px wide */
-    height: 48px; /* Ensure this is 48px tall */
+    width: 51px; 
+    height: 48px; 
     border: none;
 }
-/* --- Specific Page Button Placement (Coordinates work now) --- */
 
-/* Page 4: top: 540px; left: 644px; */
-#page-4 .action-button-wrapper {
-    top: 540px; 
-    left: 644px;
-}
+/* --- Specific Page Button Placement (Desktop Coordinates) --- */
+#page-4 .action-button-wrapper { top: 540px; left: 644px; }
+#page-7 .action-button-wrapper { top: 540px; left: 137px; }
+#page-8 .action-button-wrapper { top: 540px; left: 638px; }
 
-/* Page 7: top: 540; left: 638px; */
-#page-7 .action-button-wrapper {
-    top: 540px; 
-    left: 137px;
-}
-
-/* Page 8: top: 540px; left: 136px; */
-#page-8 .action-button-wrapper {
-    top: 540px; 
-    left: 638px;
-}
-
-/* --- Navigation Buttons (Image-Aligned Width, Below Image) --- */
+/* --- Navigation Buttons (Desktop Alignment: Below Image) --- */
 .navigation {
     position: absolute; 
-    top: calc(612px + 20px); 
+    top: calc(612px + 20px); /* 20px below 612px image */
     z-index: 30; 
     
-    /* 👇 Use responsive units and auto margin for centering */
-    width: 90vw; /* Make the navigation responsive and 90% of the viewport width */
+    /* Fixed width and centering for desktop alignment */
+    width: 792px; /* Set to exact image width on desktop */
     left: 50%;
     transform: translateX(-50%); 
     
@@ -116,78 +86,75 @@ body {
     align-items: center;
 }
 
-/* Style for the Previous button */
-.prev-page-link {
-    /* Ensures it looks like the next button */
-    color: white;
-    background-color: #000; 
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-/* Style for the Next button (remains the same) */
+.prev-page-link,
 .next-page-link {
+    /* Combined styles for both links */
     color: white;
     background-color: #000;
     padding: 10px 15px;
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
+    border: 1px solid #fff; 
 }
 
+
+/* ------------------------------------------------------------------- */
 /* --- MEDIA QUERY for Mobile Devices (Screens narrower than the image) --- */
+/* ------------------------------------------------------------------- */
 @media screen and (max-width: 792px) {
     
-    /* Scales down the main image content area */
+    /* Allow scrolling if content is too large (important for mobile) */
+    body {
+        overflow: auto; 
+    }
+    
+    /* Scales down the main image content area (the coordinate system) */
     .button-anchor {
-        /* Use 90vw (90% of viewport width) for the new coordinate system */
-        width: 90vw;
+        width: 90vw; /* Use 90% of viewport width */
         height: auto; /* Allow height to adjust proportionally */
     }
 
     /* Scales down the actual image */
     .full-page-image {
-        /* Set max width to 100% of its parent (.button-anchor) */
-        width: 100%; 
+        width: 100%; /* Set width to 100% of its parent (.button-anchor) */
         height: auto; /* Maintain aspect ratio */
         border: 1px solid gray;
     }
     
-    /* --- Custom Button Scaling (Crucial for mobile alignment) --- */
-    /* We must recalculate the custom button coordinates using percentages 
-       relative to the new 90vw width to keep its position proportional. */
-       
+    /* --- Custom Button Scaling (Mobile Proportional Coordinates) --- */
     .action-button-wrapper {
-        /* Ensure all coordinates are now percentages of the new width/height.
-           Example: 644px / 792px ≈ 81.3% */
-        font-size: 0.8rem; /* Optional: Scale down button text */
+        font-size: 0.8rem; /* Scale down button text */
     }
 
     /* Page 4: 644px left, 540px top */
     #page-4 .action-button-wrapper {
-        top: calc(540 / 612 * 100%); /* Maintain vertical proportion */
-        left: calc(644 / 792 * 100%); /* Maintain horizontal proportion */
+        top: calc(540 / 612 * 100%); 
+        left: calc(644 / 792 * 100%); 
     }
 
     /* Page 7: 638px left, 540px top */
     #page-7 .action-button-wrapper {
         top: calc(540 / 612 * 100%); 
-        left: calc(638 / 792 * 100%); 
+        left: calc(137 / 792 * 100%); 
     }
 
     /* Page 8: 136px left, 540px top */
     #page-8 .action-button-wrapper {
         top: calc(540 / 612 * 100%); 
-        left: calc(136 / 792 * 100%); 
+        left: calc(638 / 792 * 100%); 
     }
     
-    /* Ensure navigation is placed below the scaled image */
+    /* --- Mobile Navigation Fix (Anchor to Bottom) --- */
     .navigation {
-        /* We must now use a percentage calculation for 'top' to account for the scaled image height */
-        /* New top position will be roughly 612px (image height) + 20px (spacing) */
-        top: calc(100% + 20px); 
-    }
+        /* KEY FIX: Forces the nav buttons to the bottom of the viewport */
+        position: fixed; 
+        bottom: 20px; 
+        top: auto; 
 
+        /* Responsive width and centering */
+        width: 90vw; 
+        left: 50%;
+        transform: translateX(-50%); 
+    }
 }
