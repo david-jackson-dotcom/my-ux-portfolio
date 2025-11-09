@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    /* Allow body to scroll */
     overflow: auto; 
     background-color: #ccc;
 }
@@ -15,7 +16,6 @@ body {
     min-height: 100vh;
     border-style: solid;
     border-color: gray;
-    /* FIX: Set a maximum width for desktop alignment */
     max-width: 100%;
 }
 
@@ -106,30 +106,31 @@ body {
 /* ------------------------------------------------------------------- */
 @media screen and (max-width: 792px) {
     
-    /* NEW FIX: Make the main page container use Flexbox for reliable centering */
+    /* NEW FIX: Make the main page container use Flexbox for reliable centering of the whole content block */
     .page-container {
         display: flex;
         flex-direction: column;
         align-items: center; /* Centers all child elements (image and navigation) horizontally */
-        justify-content: flex-start; /* Aligns to the top */
-        min-height: auto; /* Allow height to collapse to content size */
-        padding-top: 20px; /* Add top padding to the whole content stack */
+        justify-content: flex-start; 
+        min-height: auto; 
+        padding-top: 20px; 
+        padding-bottom: 20px;
     }
 
-    /* FIX 1: Remove absolute positioning for scrolling flow */
+    /* FIX 1: Overriding the image-wrapper absolute desktop styles for mobile flow */
     .image-wrapper {
-        position: relative; 
+        position: relative; /* Must be relative to flow in Flexbox */
         height: auto; 
-        width: 90vw; /* Match navigation width */
+        width: 100%; /* Ensure it spans full container width defined by page-container */
         
-        /* Remove inherited Flexbox centering as the page-container is handling it */
         display: block; 
     }
     
     /* Scales down the main image content area (the coordinate system) */
     .button-anchor {
-        width: 100%; /* Fill the 90vw parent */
+        width: 90vw; /* Use 90% of viewport width */
         height: auto; 
+        margin: 0 auto; /* Ensures the image container is centered */
     }
 
     /* Scales down the actual image */
@@ -149,21 +150,22 @@ body {
     
     /* --- Mobile Navigation Fix (Sits Below Scaled Image) --- */
     .navigation {
-        /* FIX 2: Simple relative block now centered by the .page-container Flexbox */
         position: relative; 
         top: auto; 
         bottom: auto; 
         
         /* Spacing and width */
         margin-top: 40px; 
-        width: 90vw; /* Aligns with the image block */
+        margin-bottom: 20px;
         
-        /* Ensure display remains flex to keep buttons side-by-side */
+        /* CRITICAL: Must match the image's width (90vw) to align properly */
+        width: 90vw; 
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
         
-        /* Remove conflicting positioning styles */
+        /* No need for left/transform as page-container centers it */
         left: auto;
         transform: none;
     }
