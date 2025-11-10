@@ -153,10 +153,10 @@ body {
     /* --- Action Button Size and Scaling Fix --- */
     .custom-graphic-button img {
         /* Use percentage width relative to the scaled image for proportional sizing */
-        width: 6.44%; 
+        width: 100%; 
         height: auto; 
-        min-width: 30px; /* Enforce minimum size for visibility */
-        min-height: 30px; /* Enforce minimum size for visibility */
+        min-width: 51px; /* Enforce minimum size for visibility */
+        min-height: 48px; /* Enforce minimum size for visibility */
         max-width: 51px; 
         max-height: 48px;
     }
