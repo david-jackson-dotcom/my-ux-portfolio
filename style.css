@@ -1,4 +1,4 @@
-/* style.css - LATEST REVISION: Strict Identical Scaling for Buttons */
+/* style.css - LATEST REVISION: Re-established Fixed Desktop Button Size */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
@@ -72,9 +72,10 @@ z-index: 20;
 /* Button Graphic Styling (51px x 48px) */
 .custom-graphic-button img {
 display: block;
-width: 51px; /* FIXED SIZE FOR DESKTOP */
-height: 48px; /* FIXED SIZE FOR DESKTOP */
+width: 51px; /* REVERTED TO FIXED DESKTOP SIZE */
+height: 48px; /* REVERTED TO FIXED DESKTOP SIZE */
 border: none;
+/* Removed proportional styles from global context */
 }
 
 /* --- Specific Page Button Placement (Desktop Coordinates) --- */
@@ -167,9 +168,9 @@ left: auto;
 
 /* --- Action Button Size and Scaling Fix (Strict Proportional Scaling) --- */
 .custom-graphic-button img {
-width: 6.44%;
+width: 6.44%; /* PROPORTIONAL SCALING IS ONLY HERE */
 height: auto;
-/* Removed min-width/min-height to ensure strict proportional scaling on all sizes */
+/* Min-width/min-height properties remain removed for strict proportional scaling */
 max-width: 51px;
 max-height: 48px;
 }
