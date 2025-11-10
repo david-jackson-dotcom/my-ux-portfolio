@@ -1,7 +1,4 @@
-Here is the text content of the latest revision to style.css. This revision implements absolute positioning for the desktop layout, pinning the image to the very top and positioning the navigation buttons precisely 20px below it.
-CSS
-
-/* style.css - LATEST REVISION: Absolute Vertical Positioning for Desktop */
+/* style.css - LATEST REVISION: Restored Grey Background */
 
 /* --- Reset and Base Styles --- */
 body {
@@ -19,11 +16,14 @@ body {
     min-height: 100vh;
     max-width: 100%;
     display: block; 
+    
+    /* FIX: Explicitly setting background to ensure grey is visible */
+    background-color: #ccc; 
 }
 
 /* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
 .image-wrapper {
-    /* CHANGED: Absolute positioning for precise control relative to .page-container */
+    /* Absolute positioning for precise control relative to .page-container */
     position: absolute; 
     top: 0; /* Pinned to the top of the viewport */
     left: 50%; /* Start at center */
@@ -74,7 +74,7 @@ body {
 
 /* --- Navigation Buttons (Desktop Alignment: Below Image) */
 .navigation {
-    /* CHANGED: Must be absolute to sit below the absolute image */
+    /* Must be absolute to sit below the absolute image */
     position: absolute; 
     top: 632px; /* 612px (image height) + 20px (margin) */
     left: 50%; /* Start at center */
