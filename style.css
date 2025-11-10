@@ -1,7 +1,4 @@
-Here is the full CSS text, including the finalized fix that ensures the buttons are correctly sized on desktop (51px) by isolating the fixed size rule within a min-width media query.
-CSS
-
-/* style.css - LATEST REVISION: Fixed Desktop Button Size via min-width Query */
+/* style.css - LATEST REVISION: Transparent Hotspot (Fixed Size Desktop, Proportional Mobile) */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
@@ -73,13 +70,20 @@ padding: 0;
 .action-button-wrapper {
 position: absolute; /* Positioned correctly relative to .button-anchor */
 z-index: 20;
+
+/* FIX: Establish fixed size on the wrapper for reliable desktop viewing */
+width: 51px;
+height: 48px;
 }
 
-/* Button Graphic Styling (Default, non-sized for global context) */
+/* Button Graphic Styling: Creates the transparent hotspot */
 .custom-graphic-button img {
 display: block;
+width: 100%; /* Fills the parent wrapper's size */
+height: 100%;
 border: none;
-height: auto;
+opacity: 0.01; /* The "t.gif" effect: transparent and clickable */
+cursor: pointer;
 }
 
 /* --- Specific Page Button Placement (Desktop Coordinates) --- */
@@ -119,18 +123,6 @@ font-size: 16px;
 border: 1px solid red;
 display: inline-block;
 }
-
-/* ------------------------------------------------------------------- */
-/* --- MEDIA QUERY for Desktop Devices (Apply fixed size ONLY when wide) --- */
-/* ------------------------------------------------------------------- */
-@media screen and (min-width: 793px) {
-    /* 1. FIX: Enforce fixed pixel size for desktop */
-    .custom-graphic-button img {
-        width: 51px;
-        height: 48px;
-    }
-}
-
 
 /* ------------------------------------------------------------------- */
 /* --- MEDIA QUERY for Mobile Devices (Handling all screen sizes and orientations) --- */
@@ -183,9 +175,10 @@ left: auto;
 }
 
 /* --- Action Button Size and Scaling Fix (Strict Proportional Scaling) --- */
-.custom-graphic-button img {
-width: 6.44%; /* PROPORTIONAL SCALING IS ONLY HERE */
-height: auto;
+.action-button-wrapper {
+    /* OVERRIDE: Proportional scaling for mobile (6.44% width of image wrapper) */
+    width: 6.44%;
+    height: auto;
 }
 
 /* --- Mobile Button Coordinates (Proportional) --- */
