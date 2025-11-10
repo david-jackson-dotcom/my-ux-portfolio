@@ -1,4 +1,4 @@
-/* style.css - LATEST REVISION: Fixed Desktop Vertical Alignment */
+/* style.css - LATEST REVISION: Image Pinned to Top */
 
 /* --- Reset and Base Styles --- */
 body {
@@ -30,8 +30,8 @@ body {
     width: 792px; /* Set fixed width for desktop */
     height: 612px; /* Set fixed height for desktop */
     
-    /* NEW: Use margin to center horizontally and position vertically */
-    margin: 50px auto 0 auto; /* 50px from top, auto horizontal centering */
+    /* NEW: Use margin to center horizontally and pin to top vertically */
+    margin: 0 auto 0 auto; /* 0px from top, auto horizontal centering */
 }
 
 /* This is the 792x612 coordinate system anchor */
@@ -132,7 +132,7 @@ body {
         max-width: 792px; 
         margin-left: auto;
         margin-right: auto;
-        margin-top: 0; /* Ensures mobile layout does not inherit the 50px desktop margin */
+        margin-top: 0; /* Ensures mobile layout does not inherit desktop margin */
         
         display: block; 
     }
@@ -205,6 +205,3 @@ body {
         display: inline-block; 
     }
 }
-
-
-Gemini can
