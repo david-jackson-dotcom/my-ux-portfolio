@@ -1,4 +1,7 @@
-/* style.css - LATEST REVISION: Fixed Demo Button Overlap (Absolute Image Fix) */
+Here is the text content of the latest file, style.css. This version includes the fix that adjusted the minimum size of the custom demo buttons back down to 38px to prevent them from becoming too large when the screen is narrow.
+CSS
+
+/* style.css - LATEST REVISION: Adjusted Mobile Min-Size for Buttons */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
@@ -14,8 +17,8 @@ background-color: #ccc;
 }
 
 .page-container {
-/* DESKTOP: Sets up the main background and boundary /
-position: relative; / CRITICAL: Required anchor for absolute children */
+/* DESKTOP: Sets up the main background and boundary */
+position: relative; /* CRITICAL: Required anchor for absolute children */
 width: 100vw;
 min-height: 100vh;
 max-width: 100%;
@@ -26,13 +29,13 @@ background-color: #ccc;
 
 }
 
-/* --- Image Wrapper and Z-index Management (Desktop/Default) --- /
+/* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
 .image-wrapper {
-/ Absolute positioning for precise control relative to .page-container /
+/* Absolute positioning for precise control relative to .page-container */
 position: absolute;
-top: 0; / Pinned to the top of the viewport /
-left: 50%; / Start at center /
-transform: translateX(-50%); / Pull back by half its width for perfect centering */
+top: 0; /* Pinned to the top of the viewport */
+left: 50%; /* Start at center */
+transform: translateX(-50%); /* Pull back by half its width for perfect centering */
 
 z-index: 10;
 
@@ -50,30 +53,30 @@ height: 100%;
 }
 
 .full-page-image {
-/* Dimensions remain fixed for desktop /
+/* Dimensions remain fixed for desktop */
 width: 792px;
 height: 612px;
 display: block;
 border: 1px solid gray;
 filter: none;
 transition: none;
-/ CRITICAL FIX: Make image absolute to take it out of flow, allowing button-anchor to overlap */
+/* CRITICAL FIX: Make image absolute to take it out of flow, allowing button-anchor to overlap */
 position: absolute;
 top: 0;
 left: 0;
 }
 
-/* --- Remote Resource Button Placement (Desktop/Default) --- /
+/* --- Remote Resource Button Placement (Desktop/Default) --- */
 .action-button-wrapper {
-position: absolute; / Positioned correctly relative to .button-anchor */
+position: absolute; /* Positioned correctly relative to .button-anchor */
 z-index: 20;
 }
 
-/* Button Graphic Styling (51px x 48px) /
+/* Button Graphic Styling (51px x 48px) */
 .custom-graphic-button img {
 display: block;
-width: 51px; / FIXED SIZE FOR DESKTOP /
-height: 48px; / FIXED SIZE FOR DESKTOP */
+width: 51px; /* FIXED SIZE FOR DESKTOP */
+height: 48px; /* FIXED SIZE FOR DESKTOP */
 border: none;
 }
 
@@ -82,13 +85,13 @@ border: none;
 #page-7 .action-button-wrapper { top: 540px; left: 137px; }
 #page-8 .action-button-wrapper { top: 540px; left: 638px; }
 
-/* --- Navigation Buttons (Desktop Alignment: Below Image) /
+/* --- Navigation Buttons (Desktop Alignment: Below Image) */
 .navigation {
-/ Must be absolute to sit below the absolute image wrapper /
+/* Must be absolute to sit below the absolute image wrapper */
 position: absolute;
-top: 632px; / 612px (image height) + 20px (margin) /
-left: 50%; / Start at center /
-transform: translateX(-50%); / Pull back by half its width for perfect centering */
+top: 632px; /* 612px (image height) + 20px (margin) */
+left: 50%; /* Start at center */
+transform: translateX(-50%); /* Pull back by half its width for perfect centering */
 
 z-index: 30;
 
@@ -115,17 +118,17 @@ border: 1px solid red;
 display: inline-block;
 }
 
-/* ------------------------------------------------------------------- /
-/ --- MEDIA QUERY for Mobile Devices (Handling all screen sizes and orientations) --- /
-/ ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------- */
+/* --- MEDIA QUERY for Mobile Devices (Handling all screen sizes and orientations) --- */
+/* ------------------------------------------------------------------- */
 @media screen and (max-width: 792px), screen and (orientation: landscape) {
 
-/* FIX: Main page container must be a Flex container for mobile centering /
+/* FIX: Main page container must be a Flex container for mobile centering */
 .page-container {
 display: flex;
 flex-direction: column;
-align-items: center; / Centers content horizontally /
-justify-content: flex-end; / Vertical alignment to the bottom (Mobile standard) */
+align-items: center; /* Centers content horizontally */
+justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
 
 min-height: 100vh;
 padding-top: 20px;
@@ -134,13 +137,13 @@ padding-bottom: 70px;
 border: none;
 }
 
-/* FIX 1: Overrides absolute positioning for flow /
+/* FIX 1: Overrides absolute positioning for flow */
 .image-wrapper {
-position: relative; / CRITICAL: Must be relative for child positioning and flow /
+position: relative; /* CRITICAL: Must be relative for child positioning and flow */
 height: auto;
 width: 90vw;
 max-width: 792px;
-margin: 0 auto; / Centered in flow */
+margin: 0 auto; /* Centered in flow */
 
 /* Reset absolute properties */
 left: auto;
@@ -155,22 +158,22 @@ width: 100%;
 height: auto;
 }
 
-/* Scales down the actual image /
+/* Scales down the actual image */
 .full-page-image {
 width: 100%;
 height: auto;
-/ CRITICAL FIX: Override desktop absolute positioning */
+/* CRITICAL FIX: Override desktop absolute positioning */
 position: relative;
 top: auto;
 left: auto;
 }
 
-/* --- Action Button Size and Scaling Fix (Increased min-size) --- */
+/* --- Action Button Size and Scaling Fix (Adjusted min-size) --- */
 .custom-graphic-button img {
 width: 6.44%;
 height: auto;
-min-width: 48px;
-min-height: 48px;
+min-width: 38px; /* ADJUSTED MINIMUM SIZE */
+min-height: 38px; /* ADJUSTED MINIMUM SIZE */
 max-width: 51px;
 max-height: 48px;
 }
@@ -185,9 +188,9 @@ font-size: 0.8rem;
 #page-7 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(137 / 792 * 100%); }
 #page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
 
-/* --- Mobile Navigation Fix (Overrides absolute positioning) --- /
+/* --- Mobile Navigation Fix (Overrides absolute positioning) --- */
 .navigation {
-position: relative; / CRITICAL: Restore to flow */
+position: relative; /* CRITICAL: Restore to flow */
 
 /* Reset absolute properties */
 top: auto;
@@ -207,10 +210,10 @@ justify-content: space-between;
 align-items: center;
 }
 
-/* CRITICAL FIX: Only change size/spacing for mobile, inherit everything else /
+/* CRITICAL FIX: Only change size/spacing for mobile, inherit everything else */
 .prev-page-link,
 .next-page-link {
-/ Inherits color, background, border-radius, and text-decoration from desktop styles */
+/* Inherits color, background, border-radius, and text-decoration from desktop styles */
 
 padding: 8px 12px;
 font-size: 14px;
