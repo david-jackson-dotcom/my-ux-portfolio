@@ -1,4 +1,4 @@
-/* style.css - LATEST REVISION: Re-established Fixed Desktop Button Size */
+/* style.css - LATEST REVISION: Fixed Desktop Button Size and Image Margins */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
@@ -61,6 +61,9 @@ transition: none;
 position: absolute;
 top: 0;
 left: 0;
+/* 1. FIX: Strike all margins/padding around images */
+margin: 0;
+padding: 0;
 }
 
 /* --- Remote Resource Button Placement (Desktop/Default) --- */
@@ -72,8 +75,8 @@ z-index: 20;
 /* Button Graphic Styling (51px x 48px) */
 .custom-graphic-button img {
 display: block;
-width: 51px; /* REVERTED TO FIXED DESKTOP SIZE */
-height: 48px; /* REVERTED TO FIXED DESKTOP SIZE */
+width: 51px; /* 2. FIX: Ensure fixed size is set globally for desktop */
+height: 48px;
 border: none;
 /* Removed proportional styles from global context */
 }
@@ -129,8 +132,8 @@ align-items: center; /* Centers content horizontally */
 justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
 
 min-height: 100vh;
-padding-top: 0px;
-padding-bottom: 0px;
+padding-top: 20px;
+padding-bottom: 70px;
 
 border: none;
 }
@@ -168,11 +171,9 @@ left: auto;
 
 /* --- Action Button Size and Scaling Fix (Strict Proportional Scaling) --- */
 .custom-graphic-button img {
-width: 6.44%; /* PROPORTIONAL SCALING IS ONLY HERE */
+width: 6.44%; /* OVERRIDE: Proportional scaling for mobile */
 height: auto;
-/* Min-width/min-height properties remain removed for strict proportional scaling */
-max-width: 51px;
-max-height: 48px;
+/* Removed max-width/height properties to simplify and avoid conflict with fixed desktop size */
 }
 
 /* --- Mobile Button Coordinates (Proportional) --- */
@@ -194,7 +195,7 @@ top: auto;
 left: auto;
 transform: none;
 
-margin-top: 0px; /* Main separation from image */
+margin-top: 40px; /* Main separation from image */
 margin-bottom: 20px;
 
 width: 100%;
