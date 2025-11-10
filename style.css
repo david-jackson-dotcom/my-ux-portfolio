@@ -1,89 +1,94 @@
-/* style.css - LATEST REVISION: Final Fix - Transparent 40px Hotspot & Margin Removal */
+Here is the full CSS text, including the final, aggressive margin-removal rules applied directly to the html and body elements to eliminate any residual unwanted space.
+CSS
+
+/* style.css - LATEST REVISION: FINAL MARGIN FIX (html/body overflow) */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
-html, body {
-margin: 0;
-padding: 0;
+/* Setting height: 100% and overflow: hidden/clip ensures the entire viewport is managed */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Allow vertical scrolling if content exceeds height */
+    background-color: #ccc;
+    font-family: sans-serif;
 }
 
 /* --- Reset and Base Styles --- */
-body {
-font-family: sans-serif;
-overflow: auto;
-background-color: #ccc;
-}
-
 .page-container {
-/* DESKTOP: Sets up the main background and boundary */
-position: relative; /* CRITICAL: Required anchor for absolute children */
-width: 100vw;
-min-height: 100vh;
-max-width: 100%;
-display: block;
-
-/* FIX: Explicitly setting background to ensure grey is visible */
-background-color: #ccc;
-
+    /* DESKTOP: Sets up the main background and boundary */
+    position: relative; /* CRITICAL: Required anchor for absolute children */
+    width: 100vw;
+    min-height: 100vh;
+    max-width: 100%;
+    display: block;
+    background-color: #ccc;
 }
 
 /* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
 .image-wrapper {
-/* Absolute positioning for precise control relative to .page-container */
-position: absolute;
-top: 0; /* Pinned to the top of the viewport */
-left: 50%; /* Start at center */
-transform: translateX(-50%); /* Pull back by half its width for perfect centering */
+    /* Absolute positioning for precise control relative to .page-container */
+    position: absolute;
+    top: 0; /* Pinned to the top of the viewport */
+    left: 50%; /* Start at center */
+    transform: translateX(-50%); /* Pull back by half its width for perfect centering */
 
-z-index: 10;
+    z-index: 10;
 
-display: block;
-width: 792px;
-height: 612px;
+    display: block;
+    width: 792px;
+    height: 612px;
 
 }
 
 /* This is the 792x612 coordinate system anchor */
 .button-anchor {
-position: relative;
-width: 100%;
-height: 100%;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .full-page-image {
-/* Dimensions remain fixed for desktop */
-width: 792px;
-height: 612px;
-display: block;
-border: 1px solid gray;
-filter: none;
-transition: none;
-/* CRITICAL FIX: Make image absolute to take it out of flow, allowing button-anchor to overlap */
-position: absolute;
-top: 0;
-left: 0;
-/* 1. FIX: Strike all margins/padding around images with high priority */
-margin: 0 !important;
-padding: 0 !important;
+    /* Dimensions remain fixed for desktop */
+    width: 792px;
+    height: 612px;
+    display: block;
+    border: 1px solid gray;
+    filter: none;
+    transition: none;
+    /* CRITICAL FIX: Make image absolute to take it out of flow, allowing button-anchor to overlap */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* FIX: Strike all margins/padding around images with high priority */
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* --- Remote Resource Button Placement (Desktop/Default) --- */
 .action-button-wrapper {
-position: absolute; /* Positioned correctly relative to .button-anchor */
-z-index: 20;
+    position: absolute; /* Positioned correctly relative to .button-anchor */
+    z-index: 20;
 
-/* 3. FIX: Establish fixed size on the wrapper for reliable desktop viewing (40px x 40px) */
-width: 40px;
-height: 40px;
+    /* FIX: Establish fixed size on the wrapper for reliable desktop viewing (40px x 40px) */
+    width: 40px;
+    height: 40px;
 }
 
 /* Button Graphic Styling: Creates the transparent hotspot */
 .custom-graphic-button img {
-display: block;
-width: 100%; /* Fills the parent wrapper's size */
-height: 100%;
-border: none;
-opacity: 0; /* 2. FIX: Fully invisible transparent hotspot */
-cursor: pointer;
+    display: block;
+    width: 100%; /* Fills the parent wrapper's size */
+    height: 100%;
+    border: none;
+    opacity: 0; /* Fully invisible transparent hotspot */
+    cursor: pointer;
 }
 
 /* --- Specific Page Button Placement (Desktop Coordinates) --- */
@@ -93,35 +98,35 @@ cursor: pointer;
 
 /* --- Navigation Buttons (Desktop Alignment: Below Image) */
 .navigation {
-/* Must be absolute to sit below the absolute image wrapper */
-position: absolute;
-top: 632px; /* 612px (image height) + 20px (margin) */
-left: 50%; /* Start at center */
-transform: translateX(-50%); /* Pull back by half its width for perfect centering */
+    /* Must be absolute to sit below the absolute image wrapper */
+    position: absolute;
+    top: 632px; /* 612px (image height) + 20px (margin) */
+    left: 50%; /* Start at center */
+    transform: translateX(-50%); /* Pull back by half its width for perfect centering */
 
-z-index: 30;
+    z-index: 30;
 
-/* Set fixed width (792px) for perfect desktop alignment with the image */
-width: 792px;
+    /* Set fixed width (792px) for perfect desktop alignment with the image */
+    width: 792px;
 
-/* Flexbox settings for split alignment */
-display: flex;
-justify-content: space-between;
-align-items: center;
+    /* Flexbox settings for split alignment */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
 }
 
 .prev-page-link,
 .next-page-link {
-/* Combined styles for both links (These are the defaults that apply to all screen sizes) */
-color: white;
-background-color: #000;
-padding: 10px 15px;
-text-decoration: none;
-border-radius: 5px;
-font-size: 16px;
-border: 1px solid red;
-display: inline-block;
+    /* Combined styles for both links (These are the defaults that apply to all screen sizes) */
+    color: white;
+    background-color: #000;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid red;
+    display: inline-block;
 }
 
 /* ------------------------------------------------------------------- */
@@ -131,59 +136,59 @@ display: inline-block;
 
 /* FIX: Main page container must be a Flex container for mobile centering */
 .page-container {
-display: flex;
-flex-direction: column;
-align-items: center; /* Centers content horizontally */
-justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
 
-min-height: 100vh;
-padding-top: 20px;
-padding-bottom: 70px;
+    min-height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 70px;
 
-border: none;
+    border: none;
 }
 
 /* FIX 1: Overrides absolute positioning for flow */
 .image-wrapper {
-position: relative; /* CRITICAL: Must be relative for child positioning and flow */
-height: auto;
-width: 90vw;
-max-width: 792px;
-margin: 0 auto; /* Centered in flow */
+    position: relative; /* CRITICAL: Must be relative for child positioning and flow */
+    height: auto;
+    width: 90vw;
+    max-width: 792px;
+    margin: 0 auto; /* Centered in flow */
 
-/* Reset absolute properties */
-left: auto;
-transform: none;
+    /* Reset absolute properties */
+    left: auto;
+    transform: none;
 
-display: block;
+    display: block;
 }
 
 /* Scales down the main image content area (the coordinate system) */
 .button-anchor {
-width: 100%;
-height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 /* Scales down the actual image */
 .full-page-image {
-width: 100%;
-height: auto;
-/* CRITICAL FIX: Override desktop absolute positioning */
-position: relative;
-top: auto;
-left: auto;
+    width: 100%;
+    height: auto;
+    /* CRITICAL FIX: Override desktop absolute positioning */
+    position: relative;
+    top: auto;
+    left: auto;
 }
 
 /* --- Action Button Size and Scaling Fix (Strict Proportional Scaling) --- */
 .action-button-wrapper {
-    /* 3. FIX: Proportional scaling for 40px/792px = 5.05% */
+    /* Proportional scaling for 40px/792px = 5.05% */
     width: 5.05%;
-    height: 5.05%; /* Since it's a square, we can use a percentage height override */
+    height: 5.05%; /* Since it's a square, we use a percentage height override */
 }
 
 /* --- Mobile Button Coordinates (Proportional) --- */
 .action-button-wrapper {
-font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 /* Proportional positioning based on 100% of the scaled .button-anchor */
@@ -193,35 +198,35 @@ font-size: 0.8rem;
 
 /* --- Mobile Navigation Fix (Overrides absolute positioning) --- */
 .navigation {
-position: relative; /* CRITICAL: Restore to flow */
+    position: relative; /* CRITICAL: Restore to flow */
 
-/* Reset absolute properties */
-top: auto;
-left: auto;
-transform: none;
+    /* Reset absolute properties */
+    top: auto;
+    left: auto;
+    transform: none;
 
-margin-top: 40px; /* Main separation from image */
-margin-bottom: 20px;
+    margin-top: 40px; /* Main separation from image */
+    margin-bottom: 20px;
 
-width: 100%;
+    width: 100%;
 
-margin-left: auto;
-margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 
-display: flex;
-justify-content: space-between;
-align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* CRITICAL FIX: Only change size/spacing for mobile, inherit everything else */
 .prev-page-link,
 .next-page-link {
-/* Inherits color, background, border-radius, and text-decoration from desktop styles */
+    /* Inherits color, background, border-radius, and text-decoration from desktop styles */
 
-padding: 8px 12px;
-font-size: 14px;
+    padding: 8px 12px;
+    font-size: 14px;
 
-display: inline-block;
+    display: inline-block;
 }
 
 }
