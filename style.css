@@ -14,8 +14,7 @@ body {
     position: relative; 
     width: 100vw;
     min-height: 100vh;
-    border-style: solid;
-    border-color: gray;
+    /* Removed border for cleaner look against gray background */
     max-width: 100%;
     display: block; 
 }
@@ -98,7 +97,7 @@ body {
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
-    border: 1px solid #fff; 
+    border: 1px solid red; /* RED BORDER */
     display: inline-block; 
 }
 
@@ -154,8 +153,10 @@ body {
     /* --- Action Button Size and Scaling Fix --- */
     .custom-graphic-button img {
         /* Use percentage width relative to the scaled image for proportional sizing */
-        width: 6.44%; /* 51px / 792px ≈ 6.44% */
+        width: 6.44%; 
         height: auto; 
+        min-width: 30px; /* Enforce minimum size for visibility */
+        min-height: 30px; /* Enforce minimum size for visibility */
         max-width: 51px; 
         max-height: 48px;
     }
@@ -179,9 +180,8 @@ body {
         margin-top: 40px; 
         margin-bottom: 20px;
         
-        /* CRITICAL WIDTH FIX: Set width to 100% to fill the image-wrapper's capped width */
+        /* CRITICAL WIDTH FIX: Set width to 100% to ensure it fills the image-wrapper's width (90vw, capped at 792px) */
         width: 100%; 
-        max-width: 792px; 
         
         /* Use auto margins to ensure horizontal centering within the flow */
         margin-left: auto;
@@ -198,15 +198,11 @@ body {
     /* CRITICAL FIX: Restore link specific styles with high priority */
     .prev-page-link,
     .next-page-link {
-        /* Restored background, color, and padding/font size for mobile priority */
-        color: white !important; /* Force override */
-        background-color: #000 !important; /* Force override */
-        border: 1px solid red !important; /* Force override */
+        color: white !important; 
+        background-color: #000 !important; 
+        border: 1px solid red !important; /* KEPT RED BORDER WITH !important */
         padding: 8px 12px;
         font-size: 14px;
         display: inline-block; 
     }
 }
-
-
-Gemini can make mistakes, so double-check it
