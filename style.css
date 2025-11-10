@@ -194,7 +194,7 @@ top: auto;
 left: auto;
 transform: none;
 
-margin-top: 40px; /* Main separation from image */
+margin-top: 0px; /* Main separation from image */
 margin-bottom: 20px;
 
 width: 100%;
