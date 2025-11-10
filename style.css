@@ -129,8 +129,8 @@ align-items: center; /* Centers content horizontally */
 justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
 
 min-height: 100vh;
-padding-top: 20px;
-padding-bottom: 70px;
+padding-top: 0px;
+padding-bottom: 0px;
 
 border: none;
 }
