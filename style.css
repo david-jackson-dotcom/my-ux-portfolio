@@ -1,4 +1,4 @@
-/* style.css - LATEST REVISION: Image Pinned to Top */
+/* style.css - LATEST REVISION: Image Pinned to Top & Button Min-Size Increased */
 
 /* --- Reset and Base Styles --- */
 body {
@@ -17,8 +17,6 @@ body {
     /* Removed border */
     max-width: 100%;
     display: block; 
-    
-    /* Removed flex properties to use margin: auto centering */
 }
 
 /* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
@@ -30,8 +28,8 @@ body {
     width: 792px; /* Set fixed width for desktop */
     height: 612px; /* Set fixed height for desktop */
     
-    /* NEW: Use margin to center horizontally and pin to top vertically */
-    margin: 0 auto 0 auto; /* 0px from top, auto horizontal centering */
+    /* Pinned to top (0px margin from top), auto horizontal centering */
+    margin: 0 auto 0 auto; 
 }
 
 /* This is the 792x612 coordinate system anchor */
@@ -60,8 +58,8 @@ body {
 /* Button Graphic Styling (51px x 48px) */
 .custom-graphic-button img {
     display: block;
-    width: 51px; 
-    height: 48px; 
+    width: 51px; /* FIXED SIZE FOR DESKTOP */
+    height: 48px; /* FIXED SIZE FOR DESKTOP */
     border: none;
 }
 
@@ -149,13 +147,12 @@ body {
         height: auto; 
     }
     
-    /* --- Action Button Size and Scaling Fix --- */
+    /* --- Action Button Size and Scaling Fix (Increased min-size) --- */
     .custom-graphic-button img {
-        /* Use percentage width relative to the scaled image for proportional sizing */
         width: 6.44%; 
         height: auto; 
-        min-width: 30px; /* Enforce minimum size for visibility */
-        min-height: 30px; /* Enforce minimum size for visibility */
+        min-width: 40px; /* INCREASED MINIMUM SIZE */
+        min-height: 38px; /* INCREASED MINIMUM SIZE */
         max-width: 51px; 
         max-height: 48px;
     }
@@ -205,3 +202,5 @@ body {
         display: inline-block; 
     }
 }
+
+Gemini can make mistakes, so double-check it
