@@ -1,9 +1,13 @@
-/* style.css - LATEST REVISION: Restored Grey Background */
+/* style.css - LATEST REVISION: Final Margin Reset for Top Pinning */
+
+/* --- Absolute Margin/Padding Reset for HTML and Body --- */
+html, body {
+    margin: 0;
+    padding: 0;
+}
 
 /* --- Reset and Base Styles --- */
 body {
-    margin: 0;
-    padding: 0;
     font-family: sans-serif;
     overflow: auto; 
     background-color: #ccc;
@@ -76,7 +80,7 @@ body {
 .navigation {
     /* Must be absolute to sit below the absolute image */
     position: absolute; 
-    top: 620px; /* 612px (image height) + *px (margin) */
+    top: 632px; /* 612px (image height) + 20px (margin) */
     left: 50%; /* Start at center */
     transform: translateX(-50%); /* Pull back by half its width for perfect centering */
     
