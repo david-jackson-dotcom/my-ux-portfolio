@@ -1,4 +1,4 @@
-/* style.css - FINAL CORRECTED RESPONSIVE STYLESHEET */
+/* style.css - LATEST REVISION */
 
 /* --- Reset and Base Styles --- */
 body {
@@ -10,36 +10,37 @@ body {
 }
 
 .page-container {
-    /* DESKTOP ONLY: Sets up the main background and boundary */
+    /* DESKTOP: Sets up the main background and boundary */
     position: relative; 
     width: 100vw;
     min-height: 100vh;
-    /* Removed border for cleaner look against gray background */
+    /* Removed border */
     max-width: 100%;
     display: block; 
+    /* NEW: Use flex to center the content block */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 /* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
 .image-wrapper {
-    /* Desktop positioning relies on absolute positioning for top-alignment */
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%;
-    height: 100%;
+    /* REMOVED: position: absolute; top: 0; left: 0; height: 100%; */
+    position: relative; /* Now acts as a standard flow element and positioning context */
     z-index: 10; 
     
-    /* Flexbox centers content horizontally */
-    display: flex;
-    justify-content: center; 
-    align-items: flex-start;
+    /* Flexbox settings are now unnecessary here as page-container centers it */
+    display: block; 
+    width: 792px; /* Set fixed width for desktop */
+    height: 612px; /* Set fixed height for desktop */
+    margin-top: 20px; /* Add slight top margin for visual space */
 }
 
 /* This is the 792x612 coordinate system anchor */
 .button-anchor {
     position: relative; 
-    width: 792px; 
-    height: 612px; 
+    width: 100%; /* Fills 792px parent */
+    height: 100%; /* Fills 612px parent */
 }
 
 .full-page-image {
@@ -54,7 +55,7 @@ body {
 
 /* --- Remote Resource Button Placement (Desktop/Default) --- */
 .action-button-wrapper {
-    position: absolute; /* Positioned relative to .button-anchor */
+    position: absolute; /* Positioned correctly relative to .button-anchor */
     z-index: 20; 
 }
 
@@ -73,19 +74,23 @@ body {
 
 /* --- Navigation Buttons (Desktop Alignment: Below Image) --- */
 .navigation {
-    position: absolute; 
-    top: calc(612px + 20px); /* 20px below 612px image */
+    position: relative; /* CHANGED to relative flow */
+    margin-top: 20px; /* 20px below .image-wrapper */
     z-index: 30; 
     
     /* Set fixed width (792px) for perfect desktop alignment with the image */
     width: 792px; 
-    left: 50%;
-    transform: translateX(-50%); 
+    
+    /* Centered using margin auto */
+    margin-left: auto;
+    margin-right: auto;
     
     /* Flexbox settings for split alignment */
     display: flex; 
     justify-content: space-between; 
     align-items: center;
+
+    /* REMOVED: left, top, transform properties */
 }
 
 .prev-page-link,
@@ -97,7 +102,7 @@ body {
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
-    border: 1px solid red; /* RED BORDER */
+    border: 1px solid red; 
     display: inline-block; 
 }
 
@@ -125,17 +130,15 @@ body {
 
     /* FIX 1: Set the mobile content width (90vw) but cap it at the desktop max-width (792px) */
     .image-wrapper {
-        position: relative; 
+        position: relative; /* CRITICAL: Must be relative for child positioning */
         height: auto; 
         width: 90vw; 
         max-width: 792px; 
         margin-left: auto;
         margin-right: auto;
+        margin-top: 0; /* Override desktop margin */
         
         display: block; 
-        left: auto;
-        right: auto;
-        transform: none;
     }
     
     /* Scales down the main image content area (the coordinate system) */
@@ -153,10 +156,10 @@ body {
     /* --- Action Button Size and Scaling Fix --- */
     .custom-graphic-button img {
         /* Use percentage width relative to the scaled image for proportional sizing */
-        width: 100%; 
+        width: 6.44%; 
         height: auto; 
-        min-width: 51px; /* Enforce minimum size for visibility */
-        min-height: 48px; /* Enforce minimum size for visibility */
+        min-width: 30px; /* Enforce minimum size for visibility */
+        min-height: 30px; /* Enforce minimum size for visibility */
         max-width: 51px; 
         max-height: 48px;
     }
@@ -200,7 +203,7 @@ body {
     .next-page-link {
         color: white !important; 
         background-color: #000 !important; 
-        border: 1px solid red !important; /* KEPT RED BORDER WITH !important */
+        border: 1px solid red !important; 
         padding: 8px 12px;
         font-size: 14px;
         display: inline-block; 
