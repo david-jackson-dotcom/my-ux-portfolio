@@ -1,4 +1,4 @@
-/* style.css - LATEST REVISION: Fixed Nav Button Radius and Underline */
+/* style.css - LATEST REVISION: Fixed Demo Button Overlap (Absolute Image Fix) */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
@@ -50,13 +50,17 @@ height: 100%;
 }
 
 .full-page-image {
-/* Dimensions remain fixed for desktop */
+/* Dimensions remain fixed for desktop /
 width: 792px;
 height: 612px;
 display: block;
 border: 1px solid gray;
 filter: none;
 transition: none;
+/ CRITICAL FIX: Make image absolute to take it out of flow, allowing button-anchor to overlap */
+position: absolute;
+top: 0;
+left: 0;
 }
 
 /* --- Remote Resource Button Placement (Desktop/Default) --- /
@@ -80,7 +84,7 @@ border: none;
 
 /* --- Navigation Buttons (Desktop Alignment: Below Image) /
 .navigation {
-/ Must be absolute to sit below the absolute image /
+/ Must be absolute to sit below the absolute image wrapper /
 position: absolute;
 top: 632px; / 612px (image height) + 20px (margin) /
 left: 50%; / Start at center /
@@ -100,12 +104,12 @@ align-items: center;
 
 .prev-page-link,
 .next-page-link {
-/* Combined styles for both links (These are the defaults that apply to all screen sizes) /
+/* Combined styles for both links (These are the defaults that apply to all screen sizes) */
 color: white;
 background-color: #000;
 padding: 10px 15px;
-text-decoration: none; / FIX: No underline /
-border-radius: 5px;    / FIX: Rounded corners */
+text-decoration: none;
+border-radius: 5px;
 font-size: 16px;
 border: 1px solid red;
 display: inline-block;
@@ -123,13 +127,11 @@ flex-direction: column;
 align-items: center; / Centers content horizontally /
 justify-content: flex-end; / Vertical alignment to the bottom (Mobile standard) */
 
-min-height: 100vh; 
-padding-top: 20px; 
-padding-bottom: 70px; 
+min-height: 100vh;
+padding-top: 20px;
+padding-bottom: 70px;
 
 border: none;
-
-
 }
 
 /* FIX 1: Overrides absolute positioning for flow /
@@ -142,11 +144,9 @@ margin: 0 auto; / Centered in flow */
 
 /* Reset absolute properties */
 left: auto;
-transform: none; 
+transform: none;
 
-display: block; 
-
-
+display: block;
 }
 
 /* Scales down the main image content area (the coordinate system) */
@@ -155,10 +155,14 @@ width: 100%;
 height: auto;
 }
 
-/* Scales down the actual image */
+/* Scales down the actual image /
 .full-page-image {
 width: 100%;
 height: auto;
+/ CRITICAL FIX: Override desktop absolute positioning */
+position: relative;
+top: auto;
+left: auto;
 }
 
 /* --- Action Button Size and Scaling Fix (Increased min-size) --- */
@@ -186,14 +190,14 @@ font-size: 0.8rem;
 position: relative; / CRITICAL: Restore to flow */
 
 /* Reset absolute properties */
-top: auto; 
+top: auto;
 left: auto;
 transform: none;
 
 margin-top: 40px; /* Main separation from image */
 margin-bottom: 20px;
 
-width: 100%; 
+width: 100%;
 
 margin-left: auto;
 margin-right: auto;
@@ -201,8 +205,6 @@ margin-right: auto;
 display: flex;
 justify-content: space-between;
 align-items: center;
-
-
 }
 
 /* CRITICAL FIX: Only change size/spacing for mobile, inherit everything else /
@@ -213,11 +215,7 @@ align-items: center;
 padding: 8px 12px;
 font-size: 14px;
 
-/* Removed all !important overrides for visual properties */
-
-display: inline-block; 
-
-
+display: inline-block;
 }
 
 }
