@@ -1,4 +1,7 @@
-/* style.css - LATEST REVISION: Fixed Desktop Button Size and Image Margins */
+Here is the full CSS text, including the finalized fix that ensures the buttons are correctly sized on desktop (51px) by isolating the fixed size rule within a min-width media query.
+CSS
+
+/* style.css - LATEST REVISION: Fixed Desktop Button Size via min-width Query */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
@@ -61,7 +64,7 @@ transition: none;
 position: absolute;
 top: 0;
 left: 0;
-/* 1. FIX: Strike all margins/padding around images */
+/* FIX: Strike all margins/padding around images */
 margin: 0;
 padding: 0;
 }
@@ -72,13 +75,11 @@ position: absolute; /* Positioned correctly relative to .button-anchor */
 z-index: 20;
 }
 
-/* Button Graphic Styling (51px x 48px) */
+/* Button Graphic Styling (Default, non-sized for global context) */
 .custom-graphic-button img {
 display: block;
-width: 51px; /* 2. FIX: Ensure fixed size is set globally for desktop */
-height: 48px;
 border: none;
-/* Removed proportional styles from global context */
+height: auto;
 }
 
 /* --- Specific Page Button Placement (Desktop Coordinates) --- */
@@ -120,6 +121,18 @@ display: inline-block;
 }
 
 /* ------------------------------------------------------------------- */
+/* --- MEDIA QUERY for Desktop Devices (Apply fixed size ONLY when wide) --- */
+/* ------------------------------------------------------------------- */
+@media screen and (min-width: 793px) {
+    /* 1. FIX: Enforce fixed pixel size for desktop */
+    .custom-graphic-button img {
+        width: 51px;
+        height: 48px;
+    }
+}
+
+
+/* ------------------------------------------------------------------- */
 /* --- MEDIA QUERY for Mobile Devices (Handling all screen sizes and orientations) --- */
 /* ------------------------------------------------------------------- */
 @media screen and (max-width: 792px), screen and (orientation: landscape) {
@@ -156,7 +169,7 @@ display: block;
 /* Scales down the main image content area (the coordinate system) */
 .button-anchor {
 width: 100%;
-height: auto;
+height: 100%;
 }
 
 /* Scales down the actual image */
@@ -171,9 +184,8 @@ left: auto;
 
 /* --- Action Button Size and Scaling Fix (Strict Proportional Scaling) --- */
 .custom-graphic-button img {
-width: 6.44%; /* OVERRIDE: Proportional scaling for mobile */
+width: 6.44%; /* PROPORTIONAL SCALING IS ONLY HERE */
 height: auto;
-/* Removed max-width/height properties to simplify and avoid conflict with fixed desktop size */
 }
 
 /* --- Mobile Button Coordinates (Proportional) --- */
