@@ -1,7 +1,4 @@
-Here is the text content of the latest file, style.css. This version includes the fix that adjusted the minimum size of the custom demo buttons back down to 38px to prevent them from becoming too large when the screen is narrow.
-CSS
-
-/* style.css - LATEST REVISION: Adjusted Mobile Min-Size for Buttons */
+/* style.css - LATEST REVISION: Strict Identical Scaling for Buttons */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
@@ -168,12 +165,11 @@ top: auto;
 left: auto;
 }
 
-/* --- Action Button Size and Scaling Fix (Adjusted min-size) --- */
+/* --- Action Button Size and Scaling Fix (Strict Proportional Scaling) --- */
 .custom-graphic-button img {
 width: 6.44%;
 height: auto;
-min-width: 38px; /* ADJUSTED MINIMUM SIZE */
-min-height: 38px; /* ADJUSTED MINIMUM SIZE */
+/* Removed min-width/min-height to ensure strict proportional scaling on all sizes */
 max-width: 51px;
 max-height: 48px;
 }
