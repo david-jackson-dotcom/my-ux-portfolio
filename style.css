@@ -2,73 +2,77 @@
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
-    margin: 0;
-    padding: 0;
+margin: 0;
+padding: 0;
 }
 
 /* --- Reset and Base Styles --- */
 body {
-    font-family: sans-serif;
-    overflow: auto; 
-    background-color: #ccc;
+font-family: sans-serif;
+overflow: auto;
+background-color: #ccc;
 }
 
 .page-container {
-    /* DESKTOP: Sets up the main background and boundary */
-    position: relative; /* CRITICAL: Required anchor for absolute children */
-    width: 100vw;
-    min-height: 100vh;
-    max-width: 100%;
-    display: block; 
-    
-    /* FIX: Explicitly setting background to ensure grey is visible */
-    background-color: #ccc; 
+/* DESKTOP: Sets up the main background and boundary /
+position: relative; / CRITICAL: Required anchor for absolute children */
+width: 100vw;
+min-height: 100vh;
+max-width: 100%;
+display: block;
+
+/* FIX: Explicitly setting background to ensure grey is visible */
+background-color: #ccc; 
+
+
 }
 
-/* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
+/* --- Image Wrapper and Z-index Management (Desktop/Default) --- /
 .image-wrapper {
-    /* Absolute positioning for precise control relative to .page-container */
-    position: absolute; 
-    top: 0; /* Pinned to the top of the viewport */
-    left: 50%; /* Start at center */
-    transform: translateX(-50%); /* Pull back by half its width for perfect centering */
-    
-    z-index: 10; 
-    
-    display: block; 
-    width: 792px; 
-    height: 612px; 
+/ Absolute positioning for precise control relative to .page-container /
+position: absolute;
+top: 0; / Pinned to the top of the viewport /
+left: 50%; / Start at center /
+transform: translateX(-50%); / Pull back by half its width for perfect centering */
+
+z-index: 10; 
+
+display: block; 
+width: 792px; 
+height: 612px; 
+
+
 }
 
 /* This is the 792x612 coordinate system anchor */
 .button-anchor {
-    position: relative; 
-    width: 100%; 
-    height: 100%; 
+position: relative;
+width: 100%;
+height: 100%;
 }
 
 .full-page-image {
-    /* Dimensions remain fixed for desktop */
-    width: 792px; 
-    height: 612px;
-    display: block;
-    border: 1px solid gray; 
-    filter: none;
-    transition: none;
+/* Dimensions remain fixed for desktop */
+width: 792px;
+height: 612px;
+display: block;
+border: 1px solid gray;
+filter: none;
+transition: none;
 }
 
-/* --- Remote Resource Button Placement (Desktop/Default) --- */
+/* --- Remote Resource Button Placement (Desktop/Default) --- /
 .action-button-wrapper {
-    position: absolute; /* Positioned correctly relative to .button-anchor */
-    z-index: 20; 
+position: absolute; / Positioned correctly relative to .button-anchor */
+z-index: 20;
 }
 
-/* Button Graphic Styling (51px x 48px) */
+/* Button Graphic Styling (51px x 48px) /
 .custom-graphic-button img {
-    display: block;
-    width: 51px; /* FIXED SIZE FOR DESKTOP */
-    height: 48px; /* FIXED SIZE FOR DESKTOP */
-    border: none;
+display: block;
+width: 51px; / FIXED SIZE FOR DESKTOP /
+height: 48px; / FIXED SIZE FOR DESKTOP */
+border: none;
 }
 
 /* --- Specific Page Button Placement (Desktop Coordinates) --- */
@@ -76,135 +80,138 @@ body {
 #page-7 .action-button-wrapper { top: 540px; left: 137px; }
 #page-8 .action-button-wrapper { top: 540px; left: 638px; }
 
-/* --- Navigation Buttons (Desktop Alignment: Below Image) */
+/* --- Navigation Buttons (Desktop Alignment: Below Image) /
 .navigation {
-    /* Must be absolute to sit below the absolute image */
-    position: absolute; 
-    top: 632px; /* 612px (image height) + 20px (margin) */
-    left: 50%; /* Start at center */
-    transform: translateX(-50%); /* Pull back by half its width for perfect centering */
-    
-    z-index: 30; 
-    
-    /* Set fixed width (792px) for perfect desktop alignment with the image */
-    width: 792px; 
-    
-    /* Flexbox settings for split alignment */
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
+/ Must be absolute to sit below the absolute image /
+position: absolute;
+top: 632px; / 612px (image height) + 20px (margin) /
+left: 50%; / Start at center /
+transform: translateX(-50%); / Pull back by half its width for perfect centering */
+
+z-index: 30; 
+
+/* Set fixed width (792px) for perfect desktop alignment with the image */
+width: 792px; 
+
+/* Flexbox settings for split alignment */
+display: flex; 
+justify-content: space-between; 
+align-items: center;
+
+
 }
 
 .prev-page-link,
 .next-page-link {
-    /* Combined styles for both links */
-    color: white;
-    background-color: #000;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    border: 1px solid red; 
+/* Combined styles for both links */
+color: white;
+background-color: #000;
+padding: 10px 15px;
+text-decoration: none;
+border-radius: 5px;
+font-size: 16px;
+border: 1px solid red;
+display: inline-block;
+}
+
+/* ------------------------------------------------------------------- /
+/ --- MEDIA QUERY for Mobile Devices (Handling all screen sizes and orientations) --- /
+/ ------------------------------------------------------------------- */
+@media screen and (max-width: 792px), screen and (orientation: landscape) {
+
+/* FIX: Main page container must be a Flex container for mobile centering */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
+    
+    min-height: 100vh; 
+    padding-top: 20px; 
+    padding-bottom: 70px; 
+    
+    border: none;
+}
+
+/* FIX 1: Overrides absolute positioning for flow */
+.image-wrapper {
+    position: relative; /* CRITICAL: Must be relative for child positioning and flow */
+    height: auto; 
+    width: 90vw; 
+    max-width: 792px; 
+    margin: 0 auto; /* Centered in flow */
+    
+    /* Reset absolute properties */
+    left: auto;
+    transform: none; 
+    
+    display: block; 
+}
+
+/* Scales down the main image content area (the coordinate system) */
+.button-anchor {
+    width: 100%; 
+    height: auto; 
+}
+
+/* Scales down the actual image */
+.full-page-image {
+    width: 100%; 
+    height: auto; 
+}
+
+/* --- Action Button Size and Scaling Fix (Increased min-size) --- */
+.custom-graphic-button img {
+    width: 6.44%; 
+    height: auto; 
+    min-width: 48px; /* INCREASED MINIMUM SIZE */
+    min-height: 48px; /* INCREASED MINIMUM SIZE */
+    max-width: 51px; 
+    max-height: 48px;
+}
+
+/* --- Mobile Button Coordinates (Proportional) --- */
+.action-button-wrapper {
+    font-size: 0.8rem; 
+}
+
+/* Proportional positioning based on 100% of the scaled .button-anchor */
+#page-4 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(644 / 792 * 100%); }
+#page-7 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(137 / 792 * 100%); }
+#page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
+
+/* --- Mobile Navigation Fix (Overrides absolute positioning) --- */
+.navigation {
+    position: relative; /* CRITICAL: Restore to flow */
+    
+    /* Reset absolute properties */
+    top: auto; 
+    left: auto;
+    transform: none;
+    
+    margin-top: 40px; /* Main separation from image */
+    margin-bottom: 20px;
+    
+    width: 100%; 
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* CRITICAL FIX: Restore link specific styles with high priority */
+.prev-page-link,
+.next-page-link {
+    color: white !important; 
+    background-color: #000 !important; 
+    border: 1px solid red !important; 
+    padding: 8px 12px;
+    font-size: 14px;
     display: inline-block; 
 }
 
 
-/* ------------------------------------------------------------------- */
-/* --- MEDIA QUERY for Mobile Devices (Handling all screen sizes and orientations) --- */
-/* ------------------------------------------------------------------- */
-@media screen and (max-width: 792px), screen and (orientation: landscape) {
-    
-    /* FIX: Main page container must be a Flex container for mobile centering */
-    .page-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centers content horizontally */
-        justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
-        
-        min-height: 100vh; 
-        padding-top: 20px; 
-        padding-bottom: 70px; 
-        
-        border: none;
-    }
-
-    /* FIX 1: Overrides absolute positioning for flow */
-    .image-wrapper {
-        position: relative; /* CRITICAL: Must be relative for child positioning and flow */
-        height: auto; 
-        width: 90vw; 
-        max-width: 792px; 
-        margin: 0 auto; /* Centered in flow */
-        
-        /* Reset absolute properties */
-        left: auto;
-        transform: none; 
-        
-        display: block; 
-    }
-    
-    /* Scales down the main image content area (the coordinate system) */
-    .button-anchor {
-        width: 100%; 
-        height: auto; 
-    }
-
-    /* Scales down the actual image */
-    .full-page-image {
-        width: 100%; 
-        height: auto; 
-    }
-    
-    /* --- Action Button Size and Scaling Fix (Increased min-size) --- */
-    .custom-graphic-button img {
-        width: 6.44%; 
-        height: auto; 
-        min-width: 40px; 
-        min-height: 38px; 
-        max-width: 51px; 
-        max-height: 48px;
-    }
-    
-    /* --- Mobile Button Coordinates (Proportional) --- */
-    .action-button-wrapper {
-        font-size: 0.8rem; 
-    }
-
-    /* Proportional positioning based on 100% of the scaled .button-anchor */
-    #page-4 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(644 / 792 * 100%); }
-    #page-7 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(137 / 792 * 100%); }
-    #page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
-    
-    /* --- Mobile Navigation Fix (Overrides absolute positioning) --- */
-    .navigation {
-        position: relative; /* CRITICAL: Restore to flow */
-        
-        /* Reset absolute properties */
-        top: auto; 
-        left: auto;
-        transform: none;
-        
-        margin-top: 40px; /* Main separation from image */
-        margin-bottom: 20px;
-        
-        width: 100%; 
-        
-        margin-left: auto;
-        margin-right: auto;
-        
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    /* CRITICAL FIX: Restore link specific styles with high priority */
-    .prev-page-link,
-    .next-page-link {
-        color: white !important; 
-        background-color: #000 !important; 
-        border: 1px solid red !important; 
-        padding: 8px 12px;
-        font-size: 14px;
-        display: inline-block; 
-    }
 }
