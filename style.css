@@ -164,8 +164,8 @@ display: inline-block;
 .custom-graphic-button img {
     width: 6.44%; 
     height: auto; 
-    min-width: 48px; /* INCREASED MINIMUM SIZE */
-    min-height: 48px; /* INCREASED MINIMUM SIZE */
+    min-width: 48px; 
+    min-height: 48px; 
     max-width: 51px; 
     max-height: 48px;
 }
@@ -210,8 +210,10 @@ display: inline-block;
     border: 1px solid red !important; 
     padding: 8px 12px;
     font-size: 14px;
+    
+    /* FIXES: Added missing properties */
+    border-radius: 5px !important; 
+    text-decoration: none !important; 
+    
     display: inline-block; 
-}
-
-
 }
