@@ -1,4 +1,4 @@
-/* style.css - LATEST REVISION */
+/* style.css - LATEST REVISION: Fixed Desktop Vertical Alignment */
 
 /* --- Reset and Base Styles --- */
 body {
@@ -17,30 +17,28 @@ body {
     /* Removed border */
     max-width: 100%;
     display: block; 
-    /* NEW: Use flex to center the content block */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    
+    /* Removed flex properties to use margin: auto centering */
 }
 
 /* --- Image Wrapper and Z-index Management (Desktop/Default) --- */
 .image-wrapper {
-    /* REMOVED: position: absolute; top: 0; left: 0; height: 100%; */
-    position: relative; /* Now acts as a standard flow element and positioning context */
+    position: relative; 
     z-index: 10; 
     
-    /* Flexbox settings are now unnecessary here as page-container centers it */
     display: block; 
     width: 792px; /* Set fixed width for desktop */
     height: 612px; /* Set fixed height for desktop */
-    margin-top: 20px; /* Add slight top margin for visual space */
+    
+    /* NEW: Use margin to center horizontally and position vertically */
+    margin: 50px auto 0 auto; /* 50px from top, auto horizontal centering */
 }
 
 /* This is the 792x612 coordinate system anchor */
 .button-anchor {
     position: relative; 
-    width: 100%; /* Fills 792px parent */
-    height: 100%; /* Fills 612px parent */
+    width: 100%; 
+    height: 100%; 
 }
 
 .full-page-image {
@@ -72,9 +70,9 @@ body {
 #page-7 .action-button-wrapper { top: 540px; left: 137px; }
 #page-8 .action-button-wrapper { top: 540px; left: 638px; }
 
-/* --- Navigation Buttons (Desktop Alignment: Below Image) --- */
+/* --- Navigation Buttons (Desktop Alignment: Below Image) */
 .navigation {
-    position: relative; /* CHANGED to relative flow */
+    position: relative; 
     margin-top: 20px; /* 20px below .image-wrapper */
     z-index: 30; 
     
@@ -89,8 +87,6 @@ body {
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-
-    /* REMOVED: left, top, transform properties */
 }
 
 .prev-page-link,
@@ -118,7 +114,7 @@ body {
         flex-direction: column;
         align-items: center; /* Centers content horizontally */
         
-        /* Vertical alignment to the bottom of the screen */
+        /* Vertical alignment to the bottom of the screen (Mobile standard) */
         justify-content: flex-end; 
         
         min-height: 100vh; 
@@ -136,7 +132,7 @@ body {
         max-width: 792px; 
         margin-left: auto;
         margin-right: auto;
-        margin-top: 0; /* Override desktop margin */
+        margin-top: 0; /* Ensures mobile layout does not inherit the 50px desktop margin */
         
         display: block; 
     }
@@ -180,10 +176,10 @@ body {
         top: auto; 
         bottom: auto; 
         
-        margin-top: 40px; 
+        margin-top: 40px; /* Main separation from image */
         margin-bottom: 20px;
         
-        /* CRITICAL WIDTH FIX: Set width to 100% to ensure it fills the image-wrapper's width (90vw, capped at 792px) */
+        /* CRITICAL WIDTH FIX: Set width to 100% to ensure it fills the image-wrapper's width */
         width: 100%; 
         
         /* Use auto margins to ensure horizontal centering within the flow */
@@ -209,3 +205,6 @@ body {
         display: inline-block; 
     }
 }
+
+
+Gemini can
