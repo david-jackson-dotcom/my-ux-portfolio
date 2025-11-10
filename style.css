@@ -1,24 +1,4 @@
-Here is the full CSS text, including the final, aggressive margin-removal rules applied directly to the html and body elements to eliminate any residual unwanted space.
-CSS
-
 /* style.css - LATEST REVISION: FINAL MARGIN FIX (html/body overflow) */
-
-/* --- Absolute Margin/Padding Reset for HTML and Body --- */
-/* Setting height: 100% and overflow: hidden/clip ensures the entire viewport is managed */
-html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
-}
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: auto; /* Allow vertical scrolling if content exceeds height */
-    background-color: #ccc;
-    font-family: sans-serif;
-}
 
 /* --- Reset and Base Styles --- */
 .page-container {
