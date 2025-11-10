@@ -139,7 +139,7 @@ body {
 
     min-height: 100vh;
     padding-top: 0px;
-    padding-bottom: 40px;
+    padding-bottom: 70px;
 
     border: none;
 }
@@ -202,7 +202,7 @@ body {
     transform: none;
 
     margin-top: 0px; /* Main separation from image */
-    margin-bottom: 0px;
+    margin-bottom: 40px;
 
     width: 100%;
 
