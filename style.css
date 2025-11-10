@@ -138,8 +138,8 @@ body {
     justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
 
     min-height: 100vh;
-    padding-top: 20px;
-    padding-bottom: 70px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 
     border: none;
 }
@@ -201,8 +201,8 @@ body {
     left: auto;
     transform: none;
 
-    margin-top: 40px; /* Main separation from image */
-    margin-bottom: 20px;
+    margin-top: 0px; /* Main separation from image */
+    margin-bottom: 0px;
 
     width: 100%;
 
