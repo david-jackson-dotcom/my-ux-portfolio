@@ -1,4 +1,4 @@
-/* style.css - LATEST REVISION: Transparent Hotspot (Fixed Size Desktop, Proportional Mobile) */
+/* style.css - LATEST REVISION: Final Fix - Transparent 40px Hotspot & Margin Removal */
 
 /* --- Absolute Margin/Padding Reset for HTML and Body --- */
 html, body {
@@ -61,9 +61,9 @@ transition: none;
 position: absolute;
 top: 0;
 left: 0;
-/* FIX: Strike all margins/padding around images */
-margin: 0;
-padding: 0;
+/* 1. FIX: Strike all margins/padding around images with high priority */
+margin: 0 !important;
+padding: 0 !important;
 }
 
 /* --- Remote Resource Button Placement (Desktop/Default) --- */
@@ -71,9 +71,9 @@ padding: 0;
 position: absolute; /* Positioned correctly relative to .button-anchor */
 z-index: 20;
 
-/* FIX: Establish fixed size on the wrapper for reliable desktop viewing */
-width: 51px;
-height: 48px;
+/* 3. FIX: Establish fixed size on the wrapper for reliable desktop viewing (40px x 40px) */
+width: 40px;
+height: 40px;
 }
 
 /* Button Graphic Styling: Creates the transparent hotspot */
@@ -82,7 +82,7 @@ display: block;
 width: 100%; /* Fills the parent wrapper's size */
 height: 100%;
 border: none;
-opacity: 0.01; /* The "t.gif" effect: transparent and clickable */
+opacity: 0; /* 2. FIX: Fully invisible transparent hotspot */
 cursor: pointer;
 }
 
@@ -176,9 +176,9 @@ left: auto;
 
 /* --- Action Button Size and Scaling Fix (Strict Proportional Scaling) --- */
 .action-button-wrapper {
-    /* OVERRIDE: Proportional scaling for mobile (6.44% width of image wrapper) */
-    width: 6.44%;
-    height: auto;
+    /* 3. FIX: Proportional scaling for 40px/792px = 5.05% */
+    width: 5.05%;
+    height: 5.05%; /* Since it's a square, we can use a percentage height override */
 }
 
 /* --- Mobile Button Coordinates (Proportional) --- */
