@@ -4,6 +4,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>More User Interfaces with Figma demo</title>
+     <!-- set --vh so CSS can use calc(var(--vh) * 100) reliably -->
+  <script>
+    (function setVh() {
+      function update() {
+        document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+      }
+      // initial set
+      update();
+      // update on resize/orientation changes (debounced)
+      let t;
+      window.addEventListener('resize', function () {
+        clearTimeout(t);
+        t = setTimeout(update, 100);
+      }, { passive: true });
+      window.addEventListener('orientationchange', update);
+    })();
+  </script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
