@@ -126,103 +126,113 @@ body {
 }
 
 /* ------------------------------------------------------------------- */
-/* --- MEDIA QUERY for Mobile Devices (Handling all screen sizes and orientations) --- */
+/* --- REPLACEMENT: MEDIA QUERY for Mobile Devices (Safer, mobile-friendly) --- */
 /* ------------------------------------------------------------------- */
-@media screen and (max-width: 792px), screen and (orientation: landscape) {
+@media screen and (max-width: 792px), screen and (max-width: 1024px) and (orientation: landscape) {
 
-/* FIX: Main page container must be a Flex container for mobile centering */
-.page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers content horizontally */
-    justify-content: flex-end; /* Vertical alignment to the bottom (Mobile standard) */
+    /* Page container: avoid 100vw; prefer 100% and a mobile-friendly height approach */
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
 
-    min-height: 100vh;
-    padding-top: 0px;
-    padding-bottom: 70px;
+        width: 100%;
+        max-width: 100%;
+        /* Use modern dynamic viewport unit where supported; fallback to 100vh */
+        min-height: 100dvh;
+        min-height: 100vh; /* fallback */
+        padding-top: 0;
+        padding-bottom: 70px;
+        box-sizing: border-box;
+    }
 
-    border: none;
-}
+    /* Image wrapper: flow-based and responsive width */
+    .image-wrapper {
+        position: relative; /* child absolute positioning is relative to this */
+        width: 90%;
+        max-width: 792px;
+        margin: 0 auto;
+        left: auto;
+        transform: none;
+        display: block;
+        box-sizing: border-box;
+    }
 
-/* FIX 1: Overrides absolute positioning for flow */
-.image-wrapper {
-    position: relative; /* CRITICAL: Must be relative for child positioning and flow */
-    height: auto;
-    width: 90vw;
-    max-width: 792px;
-    margin: 0 auto; /* Centered in flow */
+    /* Establish a reliable aspect-ratio for the image area so percent-based absolute children work */
+    /* 612 / 792 = 0.772727... => 77.2727% */
+    .button-anchor {
+        position: relative;
+        width: 100%;
+        /* padding-top creates a height proportional to width */
+        padding-top: 77.272727%;
+        height: 0; /* height defined by padding-top */
+        box-sizing: border-box;
+        overflow: visible; /* keep absolutely positioned buttons visible */
+    }
 
-    /* Reset absolute properties */
-    left: auto;
-    transform: none;
+    /* Make the image fill the anchor cleanly (use object-fit for natural scaling) */
+    .full-page-image {
+        position: absolute;
+        inset: 0;         /* top:0; right:0; bottom:0; left:0; */
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* or contain, depending on how you want the image to scale */
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none;
+    }
 
-    display: block;
-}
+    /* Action button: use percentages (relative to .button-anchor) and keep square via aspect-ratio */
+    .action-button-wrapper {
+        position: absolute; /* positioned relative to .button-anchor */
+        z-index: 20;
 
-/* Scales down the main image content area (the coordinate system) */
-.button-anchor {
-    width: 100%;
-    height: 100%;
-}
+        /* Size: 5.05% of the container width/height — parent has a definite height via padding-top */
+        width: 5.05%;
+        height: 5.05%;
 
-/* Scales down the actual image */
-.full-page-image {
-    width: 100%;
-    height: auto;
-    /* CRITICAL FIX: Override desktop absolute positioning */
-    position: relative;
-    top: auto;
-    left: auto;
-}
+        /* Make the hit-area behave as a square */
+        min-width: 28px;    /* ensure a usable tap target on very small screens */
+        min-height: 28px;
+        box-sizing: border-box;
 
-/* --- Action Button Size and Scaling Fix (Strict Proportional Scaling) --- */
-.action-button-wrapper {
-    /* Proportional scaling for 40px/792px = 5.05% */
-    width: 5.05%;
-    height: 5.05%; /* Since it's a square, we use a percentage height override */
-}
+        /* Improve mobile touch behavior */
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
 
-/* --- Mobile Button Coordinates (Proportional) --- */
-.action-button-wrapper {
-    font-size: 0.8rem;
-}
+    /* Precomputed proportional coordinates for each page button */
+    /* Top percentages precomputed (540 / 612 ≈ 88.2353%) */
+    /* Left percentages precomputed (644/792 ≈ 81.3131%, 137/792 ≈ 17.2980%, 638/792 ≈ 80.5556%) */
+    #page-4 .action-button-wrapper { top: 88.2353%; left: 81.3131%; }
+    #page-7 .action-button-wrapper { top: 88.2353%; left: 17.2980%; }
+    #page-8 .action-button-wrapper { top: 88.2353%; left: 80.5556%; }
 
-/* Proportional positioning based on 100% of the scaled .button-anchor */
-#page-4 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(644 / 792 * 100%); }
-#page-7 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(137 / 792 * 100%); }
-#page-8 .action-button-wrapper { top: calc(540 / 612 * 100%); left: calc(638 / 792 * 100%); }
+    /* Navigation: put back into flow and full width */
+    .navigation {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 16px;
+        margin-bottom: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 6%;
+    }
 
-/* --- Mobile Navigation Fix (Overrides absolute positioning) --- */
-.navigation {
-    position: relative; /* CRITICAL: Restore to flow */
-
-    /* Reset absolute properties */
-    top: auto;
-    left: auto;
-    transform: none;
-
-    margin-top: 0px; /* Main separation from image */
-    margin-bottom: 40px;
-
-    width: 100%;
-
-    margin-left: auto;
-    margin-right: auto;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* CRITICAL FIX: Only change size/spacing for mobile, inherit everything else */
-.prev-page-link,
-.next-page-link {
-    /* Inherits color, background, border-radius, and text-decoration from desktop styles */
-
-    padding: 8px 12px;
-    font-size: 14px;
-
-    display: inline-block;
-}
+    /* Slightly smaller touch-friendly controls */
+    .prev-page-link,
+    .next-page-link {
+        padding: 8px 12px;
+        font-size: 14px;
+        display: inline-block;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
 
 }
