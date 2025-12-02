@@ -113,7 +113,6 @@ body {
 }
 
 .prev-page-link,
-.app-link,
 .next-page-link {
     /* Combined styles for both links (These are the defaults that apply to all screen sizes) */
     color: white;
@@ -123,6 +122,16 @@ body {
     border-radius: 5px;
     font-size: 16px;
     border: 1px solid red;
+    display: inline-block;
+}
+.app-link {
+    color: white;
+    background-color: red;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid black;
     display: inline-block;
 }
 
