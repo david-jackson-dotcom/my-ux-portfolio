@@ -1,54 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-
-    <title>Case Study: Cheese Cards with Figma demo</title>
- <!-- set --vh so CSS can use calc(var(--vh) * 100) reliably -->
-  <script>
-    (function setVh() {
-      function update() {
-        document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
-      }
-      // initial set
-      update();
-      // update on resize/orientation changes (debounced)
-      let t;
-      window.addEventListener('resize', function () {
-        clearTimeout(t);
-        t = setTimeout(update, 100);
-      }, { passive: true });
-      window.addEventListener('orientationchange', update);
-    })();
-  </script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <main class="page-container" id="page-7">
-        
-        <div class="image-wrapper">
-                        <div class="button-anchor">
-
-            <img 
-                src="page7_hr.png" 
-                alt="Full page image for Page 7" 
-                style="width: 792px; height: 612px;"
-            >
-
-        <div class="action-button-wrapper">
-            <a href="https://www.figma.com/make/W1lM5sj0SRoZ16x5ZW0IWY/Cheese-Finder---Mobile-Site---Hi-Fi?t=D1FDyP6IGUOx8BG6-6" target="_blank" class="custom-graphic-button">
-                <img src="demo_button.png" alt="View Cheese Finder">
-            </a>
-            </div>        </div>
-
-              <div class="navigation">
-              <a href="case-study-cheese-finder.html" class="prev-page-link">Back</a>
-                  <a href="https://david-jackson-dotcom.github.io/cheese-finder-beta/" class="app-link" target="_blank">Live App</a>
-            <a href="more-ui.html" class="next-page-link">Next page</a>
-        </div>
-        </div>
-    </main>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css2?family=Arsenal&display=swap" rel="stylesheet">
+		<title>
+			Case Study: Cheese Results
+		</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<main class="page-container" id="page-7">
+		<div class="content-focus"> 
+				<div class="image-wrapper">
+				<a href="https://www.figma.com/make/W1lM5sj0SRoZ16x5ZW0IWY/Cheese-Finder---Mobile-Site---Hi-Fi?node-id=0-1&t=9XpPs39DPIcJGPz4-1" target="_blank">
+            		<img 
+					src="page7_hr.png" 
+					data-high-res="page7_hr.png" 
+					alt="Full page image for Page 7" 
+					style="width: 792px; height: 612px;" />
+				</a>
+				</div>
+				<div class="navigation">
+				  	<a href="case-study-cheese-finder.html" class="prev-page-link">Back</a>
+				  	<a href="https://david-jackson-dotcom.github.io/cheese-finder-beta/" target="_blank" class="app-link">Live app</a>
+					<a href="more-ui.html" class="next-page-link">Next page</a>
+				</div>
+			</div>
+		</main>
+	</body>
 </html>
 
