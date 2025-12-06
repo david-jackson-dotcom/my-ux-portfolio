@@ -87,6 +87,8 @@ body {
     border: 2px solid #d80908;
     font-family: 'Arsenal', sans-serif;
     letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
 }
 .next-page-link {
     color: white;
@@ -98,6 +100,8 @@ body {
     border: 2px solid #d80908;
     font-family: 'Arsenal', sans-serif;
     letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
 }
 .app-link {
     color: white;
@@ -110,4 +114,12 @@ body {
     font-family: 'Arsenal', sans-serif;
     letter-spacing: 1px;
     font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+}
+.emoji-fix {
+    /* --- Visual Fix: Nudges the emoji down slightly for visual centering --- */
+    **vertical-align: -0.1em;** /* --- Spacing Fix: Adds a small gap on BOTH sides of the emoji --- */
+    **margin-right: 4px;** /* Space between the emoji and text when emoji is on the left */
+    **margin-left: 4px;** /* Space between the text and emoji when emoji is on the right */
 }
