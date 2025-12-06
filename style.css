@@ -5,7 +5,7 @@ body {
     justify-content: center; /* Centers children horizontally (still needed) */
     
     /* New Viewport Background Color */
-    background-color: #111;
+    background-color: #111111;
     
     /* Other body properties maintained */
     min-height: 100vh;
