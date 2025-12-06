@@ -119,7 +119,7 @@ body {
 }
 .emoji-fix {
     /* --- Visual Fix: Nudges the emoji down slightly for visual centering --- */
-    **vertical-align: -0.1em;** /* --- Spacing Fix: Adds a small gap on BOTH sides of the emoji --- */
-    **margin-right: 4px;** /* Space between the emoji and text when emoji is on the left */
-    **margin-left: 4px;** /* Space between the text and emoji when emoji is on the right */
+    **vertical-align: -0.3em;** /* --- Spacing Fix: Adds a small gap on BOTH sides of the emoji --- */
+    **margin-right: 6px;** /* Space between the emoji and text when emoji is on the left */
+    **margin-left: 6px;** /* Space between the text and emoji when emoji is on the right */
 }
