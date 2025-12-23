@@ -19,7 +19,7 @@ My work is rooted in solving complex product problems for industry leaders:
 <ul>
   <li>Systems Thinking: Engineered software interfaces and navigational systems for Intel and NIKE.</li>
 
-<li>End-to-End Delivery: Built the "Cheese Finder" PWA, moving from initial strategy and market identification to a working, responsive final deliverable.</li>
+<li>End-to-End Delivery: Built the "Cheese Finder" PWA, moving from initial strategy and market identification to a working, responsive final deliverable — in eight weeks.</li>
 
 <li>Technical Literacy: I operate comfortably across Figma, Adobe/Affinity suites, and front-end environments (React/HTML/Tailwind/CSS), ensuring design fidelity from concept through launch.</li>
 </ul>
