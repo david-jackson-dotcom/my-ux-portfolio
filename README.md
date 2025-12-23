@@ -8,7 +8,7 @@ A repository showcasing full-cycle UX case studies including Figma prototypes, I
 
 Product Designer & Strategist | "Fusing form and function"
 
-<h3>The Philosophy</h3>
+<h3>My Philosophy</h3>
 
 I am a strategic, multi-skilled designer who believes that great digital products are forged at the intersection of aesthetic rigor and technical feasibility. With over 20 years of experience, I prioritize hands-on execution and iterative prototyping to validate concepts and generate tangible impact.
 
